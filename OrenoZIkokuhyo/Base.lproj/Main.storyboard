@@ -1,24 +1,215 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="OrenoZIkokuhyo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="440" height="956"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UwK-w7-WZA">
+                                <rect key="frame" x="368" y="62" width="72" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="駅設定"/>
+                                <connections>
+                                    <segue destination="gTY-Ny-boI" kind="presentation" identifier="toSettings" id="igh-70-Lu7"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="発時刻情報" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KXu-aD-Hw0" userLabel="出発時刻">
+                                <rect key="frame" x="20" y="212" width="200" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="A9W-DW-yn0"/>
+                                    <constraint firstAttribute="height" constant="50" id="OyD-0m-ter"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="次発時刻情報" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7XE-wu-MFL" userLabel="次発時刻">
+                                <rect key="frame" x="20" y="453" width="200" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="9jT-MP-Sq4"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="w0e-uc-ROX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="発車カウントダウン" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rZ8-6v-3je" userLabel="発車カウントダウン">
+                                <rect key="frame" x="220" y="212" width="200" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="szv-y4-VRP"/>
+                                    <constraint firstAttribute="height" constant="50" id="yqW-xl-SZQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="次発カウントダウン" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dpf-gz-0h1" userLabel="次発カウントダウン">
+                                <rect key="frame" x="220" y="453" width="200" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="HQh-uP-Pvi"/>
+                                    <constraint firstAttribute="width" constant="200" id="TMO-vD-MJM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="現在の駅設定" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="985-os-moQ" userLabel="現在の駅設定">
+                                <rect key="frame" x="70" y="112" width="300" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="2lJ-JU-jDb"/>
+                                    <constraint firstAttribute="width" constant="300" id="DhT-Zg-Uuv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="発車情報詳細" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8oN-OQ-fXh" userLabel="発車情報詳細">
+                                <rect key="frame" x="172" y="292" width="96" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CSW-5m-LQX" userLabel="区切り線">
+                                <rect key="frame" x="20" y="343" width="400" height="1"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="8oN-OQ-fXh" firstAttribute="top" secondItem="KXu-aD-Hw0" secondAttribute="bottom" constant="30" id="1a3-pT-RVH"/>
+                            <constraint firstItem="985-os-moQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2VX-Yt-jgH"/>
+                            <constraint firstItem="985-os-moQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="2vi-tO-juo"/>
+                            <constraint firstItem="CSW-5m-LQX" firstAttribute="top" secondItem="8oN-OQ-fXh" secondAttribute="bottom" constant="30" id="2zL-7d-gUY"/>
+                            <constraint firstItem="7XE-wu-MFL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="87D-bW-R1h"/>
+                            <constraint firstItem="985-os-moQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9P3-lp-f1V"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="CSW-5m-LQX" secondAttribute="trailing" id="C0M-5w-dxg"/>
+                            <constraint firstItem="KXu-aD-Hw0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Cu4-qY-yrT"/>
+                            <constraint firstItem="CSW-5m-LQX" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="E8Y-cW-JqX"/>
+                            <constraint firstItem="KXu-aD-Hw0" firstAttribute="top" secondItem="985-os-moQ" secondAttribute="bottom" constant="50" id="IUa-9U-alK"/>
+                            <constraint firstItem="CSW-5m-LQX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="JcG-mm-MdV"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="UwK-w7-WZA" secondAttribute="trailing" id="LjV-Cx-FdB"/>
+                            <constraint firstItem="8oN-OQ-fXh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="MHu-Eu-rWH"/>
+                            <constraint firstItem="dpf-gz-0h1" firstAttribute="top" secondItem="CSW-5m-LQX" secondAttribute="bottom" constant="30" id="Ste-78-EQa"/>
+                            <constraint firstItem="UwK-w7-WZA" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="chx-WY-aGo"/>
+                            <constraint firstItem="rZ8-6v-3je" firstAttribute="top" secondItem="985-os-moQ" secondAttribute="bottom" constant="50" id="css-d8-kLO"/>
+                            <constraint firstItem="7XE-wu-MFL" firstAttribute="top" secondItem="CSW-5m-LQX" secondAttribute="bottom" constant="30" id="daz-QN-7kp"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="rZ8-6v-3je" secondAttribute="trailing" constant="20" id="orl-pd-kgH"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dpf-gz-0h1" secondAttribute="trailing" constant="20" id="qHp-Do-YBD"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="7XE-wu-MFL" secondAttribute="bottom" constant="419" id="ygk-oQ-jtY"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="countdownLabel" destination="rZ8-6v-3je" id="f1Z-oA-xjm"/>
+                        <outlet property="currentStationsLabel" destination="985-os-moQ" id="Ovc-Mx-wLj"/>
+                        <outlet property="departureTimeLabel" destination="KXu-aD-Hw0" id="7vA-Kj-djX"/>
+                        <outlet property="lineDetailLabel" destination="8oN-OQ-fXh" id="29c-Da-Mib"/>
+                        <outlet property="nextCountdownLabel" destination="dpf-gz-0h1" id="R33-Go-av7"/>
+                        <outlet property="nextDepartureTimeLabel" destination="7XE-wu-MFL" id="K6l-yw-xdI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="129.54545454545456" y="-34.518828451882847"/>
+        </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="fnb-fs-yGU">
+            <objects>
+                <viewController id="gTY-Ny-boI" customClass="SettingsViewController" customModule="OrenoZIkokuhyo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bcl-oN-n2S">
+                        <rect key="frame" x="0.0" y="0.0" width="440" height="946"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5LN-JW-8MN">
+                                <rect key="frame" x="0.0" y="50" width="440" height="56"/>
+                                <items>
+                                    <navigationItem title="駅設定" id="q1n-NV-Hxs" userLabel="駅設定">
+                                        <barButtonItem key="leftBarButtonItem" title="キャンセル" id="hGY-HM-sLH">
+                                            <connections>
+                                                <action selector="cancelButtonTapped:" destination="gTY-Ny-boI" id="tdo-6W-VMl"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="完了" id="oOJ-Iq-4jY">
+                                            <connections>
+                                                <action selector="doneButtonTapped:" destination="gTY-Ny-boI" id="oyG-Vf-nHK"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="出発駅" borderStyle="roundedRect" placeholder="例. 桜新町" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ck1-wf-KLj" userLabel="出発駅の入力">
+                                <rect key="frame" x="70" y="156" width="300" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="1ZQ-8V-bjc"/>
+                                    <constraint firstAttribute="height" constant="50" id="A0r-U5-sb4"/>
+                                    <constraint firstAttribute="width" constant="300" id="E2R-Dg-BuJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textFieldDidChange:" destination="gTY-Ny-boI" eventType="editingChanged" id="n3R-2Y-Fme"/>
+                                </connections>
+                            </textField>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Jx3-tr-lgE" userLabel="検索結果">
+                                <rect key="frame" x="76" y="494" width="288" height="128"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="baR-zl-Blg"/>
+                                </constraints>
+                            </tableView>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="到着駅" borderStyle="roundedRect" placeholder="例. 渋谷" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1tA-L0-yVB" userLabel="到着駅の入力">
+                                <rect key="frame" x="70" y="236" width="300" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="Uyb-dn-doO"/>
+                                    <constraint firstAttribute="height" constant="50" id="fdK-Pa-rVN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textFieldDidChange:" destination="gTY-Ny-boI" eventType="editingChanged" id="T7f-Sa-hGs"/>
+                                </connections>
+                            </textField>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="N3c-xs-V2h"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="N3c-xs-V2h" firstAttribute="bottom" secondItem="Jx3-tr-lgE" secondAttribute="bottom" constant="324" id="2Nn-w8-Zde"/>
+                            <constraint firstItem="Ck1-wf-KLj" firstAttribute="top" secondItem="5LN-JW-8MN" secondAttribute="bottom" constant="50" id="48t-gE-eVo"/>
+                            <constraint firstItem="Ck1-wf-KLj" firstAttribute="centerX" secondItem="bcl-oN-n2S" secondAttribute="centerX" id="8kh-kw-ly7"/>
+                            <constraint firstItem="5LN-JW-8MN" firstAttribute="centerX" secondItem="Jx3-tr-lgE" secondAttribute="centerX" id="PxJ-eF-2tB"/>
+                            <constraint firstItem="Jx3-tr-lgE" firstAttribute="leading" secondItem="N3c-xs-V2h" secondAttribute="leading" constant="76" id="Rrm-ed-Beg"/>
+                            <constraint firstItem="5LN-JW-8MN" firstAttribute="centerX" secondItem="bcl-oN-n2S" secondAttribute="centerX" id="VkY-X0-zZA"/>
+                            <constraint firstItem="1tA-L0-yVB" firstAttribute="top" secondItem="Ck1-wf-KLj" secondAttribute="bottom" constant="30" id="bsh-wm-fNA"/>
+                            <constraint firstItem="5LN-JW-8MN" firstAttribute="leading" secondItem="N3c-xs-V2h" secondAttribute="leading" id="eUS-3K-FCq"/>
+                            <constraint firstItem="1tA-L0-yVB" firstAttribute="centerX" secondItem="bcl-oN-n2S" secondAttribute="centerX" id="x66-VF-rI4"/>
+                            <constraint firstItem="5LN-JW-8MN" firstAttribute="top" secondItem="N3c-xs-V2h" secondAttribute="top" constant="50" id="xnr-kx-Zve"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="departureTextField" destination="Ck1-wf-KLj" id="LtL-Ce-mJW"/>
+                        <outlet property="destinationTextField" destination="1tA-L0-yVB" id="1Qe-7V-yfp"/>
+                        <outlet property="tableView" destination="Jx3-tr-lgE" id="Q9I-zZ-gK3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6MZ-jN-TFP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="882" y="-35"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
