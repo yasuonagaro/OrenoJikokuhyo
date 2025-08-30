@@ -39,7 +39,7 @@ class ViewController: UIViewController, SettingsViewControllerDelegate {
             // 初回起動時などの表示
             currentStationsLabel.text = "駅を設定してください"
             departureTimeLabel.text = "--:--"
-            lineDetailLabel.text = "駅を設定してください"
+            lineDetailLabel.text = ""
             countdownLabel.text = "--:--"
             nextDepartureTimeLabel.text = "--:--"
             nextCountdownLabel.text = "--:--"

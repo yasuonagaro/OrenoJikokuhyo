@@ -16,13 +16,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="440" height="956"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="次発時刻情報" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7XE-wu-MFL" userLabel="次発時刻">
-                                <rect key="frame" x="43" y="872" width="200" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="shA-dP-lS0" userLabel="上部ボックス" customClass="CustomLabel" customModule="OrenoZIkokuhyo" customModuleProvider="target">
                                 <rect key="frame" x="20" y="82" width="400" height="62"/>
                                 <subviews>
@@ -164,24 +157,66 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="次発カウントダウン" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dpf-gz-0h1" userLabel="次発カウントダウン">
-                                <rect key="frame" x="220" y="883" width="200" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="NotoSansOriya-Bold" family="Noto Sans Oriya" pointSize="20"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yp7-qf-q8g" userLabel="下部ボックス" customClass="CustomLabel" customModule="OrenoZIkokuhyo" customModuleProvider="target">
+                                <rect key="frame" x="20" y="569" width="400" height="100"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="KI1-u5-Hbc">
+                                        <rect key="frame" x="112.33333333333333" y="40" width="175.33333333333337" height="20.333333333333329"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="次発: " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rGG-Sl-I53" userLabel="次発ラベル">
+                                                <rect key="frame" x="0.0" y="0.0" width="41" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="19:15" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7XE-wu-MFL" userLabel="次発時刻">
+                                                <rect key="frame" x="48" y="0.0" width="40" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.73725497719999999" green="0.80392158030000005" blue="0.82352948189999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="残り: " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="clg-jF-4bY" userLabel="残り">
+                                                <rect key="frame" x="95" y="0.0" width="41" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6:12" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dpf-gz-0h1" userLabel="次発カウントダウン">
+                                                <rect key="frame" x="142.99999999999997" y="0.0" width="32.333333333333343" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.73725497719999999" green="0.80392158030000005" blue="0.82352948189999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.11372549830000001" green="0.14901961389999999" blue="0.26274511220000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstItem="KI1-u5-Hbc" firstAttribute="centerX" secondItem="yp7-qf-q8g" secondAttribute="centerX" id="083-jw-zlL"/>
+                                    <constraint firstItem="KI1-u5-Hbc" firstAttribute="centerY" secondItem="yp7-qf-q8g" secondAttribute="centerY" id="4ww-CO-ojU"/>
+                                    <constraint firstAttribute="height" constant="100" id="nDO-d6-isC"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.1019607931" green="0.1019607931" blue="0.1764705926" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Bte-cf-wnb" secondAttribute="trailing" constant="20" id="4lX-0g-RTR"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="yp7-qf-q8g" secondAttribute="trailing" constant="20" id="8JW-ue-3E5"/>
                             <constraint firstItem="Bte-cf-wnb" firstAttribute="top" secondItem="shA-dP-lS0" secondAttribute="bottom" constant="20" id="LHG-Ek-OoF"/>
                             <constraint firstItem="Bte-cf-wnb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="ROf-Zs-bJf"/>
                             <constraint firstItem="shA-dP-lS0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="T9D-cN-9qC"/>
                             <constraint firstItem="Bte-cf-wnb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YkS-IK-b71"/>
+                            <constraint firstItem="yp7-qf-q8g" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="b4D-lc-a87"/>
                             <constraint firstItem="shA-dP-lS0" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="nbc-e2-AsI"/>
                             <constraint firstItem="shA-dP-lS0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="o6I-0A-DcJ"/>
+                            <constraint firstItem="yp7-qf-q8g" firstAttribute="top" secondItem="Bte-cf-wnb" secondAttribute="bottom" constant="5" id="pJR-UT-oXG"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="shA-dP-lS0" secondAttribute="trailing" constant="20" id="r5X-Dp-gao"/>
                         </constraints>
                     </view>
@@ -206,80 +241,126 @@
                         <rect key="frame" x="0.0" y="0.0" width="440" height="946"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5LN-JW-8MN">
-                                <rect key="frame" x="0.0" y="50" width="440" height="56"/>
+                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5LN-JW-8MN">
+                                <rect key="frame" x="0.0" y="20" width="440" height="56"/>
                                 <items>
                                     <navigationItem title="駅設定" id="q1n-NV-Hxs" userLabel="駅設定">
-                                        <barButtonItem key="leftBarButtonItem" title="キャンセル" id="hGY-HM-sLH">
+                                        <barButtonItem key="leftBarButtonItem" title="キャンセル" style="done" id="hGY-HM-sLH">
+                                            <color key="tintColor" red="0.56862747670000002" green="0.69019609689999994" blue="0.97647058959999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <connections>
                                                 <action selector="cancelButtonTapped:" destination="gTY-Ny-boI" id="tdo-6W-VMl"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="完了" id="oOJ-Iq-4jY">
+                                        <barButtonItem key="rightBarButtonItem" title="完了" style="done" id="oOJ-Iq-4jY">
+                                            <color key="tintColor" red="0.56862747670000002" green="0.69019609689999994" blue="0.97647058959999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <connections>
                                                 <action selector="doneButtonTapped:" destination="gTY-Ny-boI" id="oyG-Vf-nHK"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
+                                <navigationBarAppearance key="standardAppearance">
+                                    <color key="backgroundColor" red="0.10091162469999999" green="0.10257629309999999" blue="0.17466425899999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </navigationBarAppearance>
+                                <navigationBarAppearance key="scrollEdgeAppearance"/>
                             </navigationBar>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="出発駅" borderStyle="roundedRect" placeholder="例. 桜新町" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ck1-wf-KLj" userLabel="出発駅の入力">
-                                <rect key="frame" x="70" y="156" width="300" height="50"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VdH-b0-afy">
+                                <rect key="frame" x="20" y="96" width="400" height="300"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="26" translatesAutoresizingMaskIntoConstraints="NO" id="z1C-uK-Tfg">
+                                        <rect key="frame" x="20" y="36" width="360" height="228"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="mDX-eL-jTT" userLabel="出発駅">
+                                                <rect key="frame" x="0.0" y="0.0" width="360" height="101"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="出発駅" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8VJ-Wy-Hta" userLabel="出発駅ラベル">
+                                                        <rect key="frame" x="0.0" y="0.0" width="360" height="20.333333333333332"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" red="0.56862747670000002" green="0.69019609689999994" blue="0.97647058959999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="出発駅" borderStyle="roundedRect" placeholder="例. 桜新町" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KSy-Gc-fBn" userLabel="出発駅入力">
+                                                        <rect key="frame" x="0.0" y="27.33333333333335" width="360" height="73.666666666666686"/>
+                                                        <color key="backgroundColor" red="0.090196087960000004" green="0.1176470518" blue="0.2117646933" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <color key="textColor" red="0.4588235021" green="0.4588235021" blue="0.4588235021" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="8VJ-Wy-Hta" secondAttribute="trailing" id="ikF-Ap-jGg"/>
+                                                    <constraint firstAttribute="trailing" secondItem="KSy-Gc-fBn" secondAttribute="trailing" id="wk8-eY-EMI"/>
+                                                </constraints>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="QHY-YQ-G7F" userLabel="到着駅">
+                                                <rect key="frame" x="0.0" y="127" width="360" height="101"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="到着駅" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T0I-bK-PqV" userLabel="到着駅ラベル">
+                                                        <rect key="frame" x="0.0" y="0.0" width="360" height="20.333333333333332"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" red="0.56862747670000002" green="0.69019609689999994" blue="0.97647058959999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="到着駅" borderStyle="roundedRect" placeholder="例. 渋谷" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qq9-q3-tXk" userLabel="到着駅入力">
+                                                        <rect key="frame" x="0.0" y="27.333333333333321" width="360" height="73.666666666666686"/>
+                                                        <color key="backgroundColor" red="0.090196087960000004" green="0.1176470518" blue="0.2117646933" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <color key="textColor" red="0.4588235021" green="0.4588235021" blue="0.4588235021" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="T0I-bK-PqV" secondAttribute="trailing" id="2Qa-FF-z93"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Qq9-q3-tXk" secondAttribute="trailing" id="LgD-Ml-vmk"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="mDX-eL-jTT" firstAttribute="leading" secondItem="z1C-uK-Tfg" secondAttribute="leading" id="6fy-9G-5vP"/>
+                                            <constraint firstAttribute="trailing" secondItem="mDX-eL-jTT" secondAttribute="trailing" id="SUM-f0-dBG"/>
+                                            <constraint firstAttribute="height" constant="228" id="UgX-9n-pX3"/>
+                                            <constraint firstAttribute="trailing" secondItem="QHY-YQ-G7F" secondAttribute="trailing" id="Z5K-9r-Kbg"/>
+                                            <constraint firstItem="mDX-eL-jTT" firstAttribute="leading" secondItem="z1C-uK-Tfg" secondAttribute="leading" id="rzl-eD-i4z"/>
+                                            <constraint firstItem="QHY-YQ-G7F" firstAttribute="leading" secondItem="z1C-uK-Tfg" secondAttribute="leading" id="xkD-Db-5Cf"/>
+                                            <constraint firstAttribute="trailing" secondItem="mDX-eL-jTT" secondAttribute="trailing" id="yLN-Oi-edY"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.1215686351" green="0.1607843041" blue="0.27450981740000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="1ZQ-8V-bjc"/>
-                                    <constraint firstAttribute="height" constant="50" id="A0r-U5-sb4"/>
-                                    <constraint firstAttribute="width" constant="300" id="E2R-Dg-BuJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="z1C-uK-Tfg" secondAttribute="trailing" constant="20" id="LUU-vJ-2DS"/>
+                                    <constraint firstItem="z1C-uK-Tfg" firstAttribute="centerX" secondItem="VdH-b0-afy" secondAttribute="centerX" id="a2B-Wb-G25"/>
+                                    <constraint firstItem="z1C-uK-Tfg" firstAttribute="leading" secondItem="VdH-b0-afy" secondAttribute="leading" constant="20" id="irh-g3-MIM"/>
+                                    <constraint firstItem="z1C-uK-Tfg" firstAttribute="centerY" secondItem="VdH-b0-afy" secondAttribute="centerY" id="j8Q-Dl-9u6"/>
+                                    <constraint firstAttribute="height" constant="300" id="lYM-TO-ZOM"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="textFieldDidChange:" destination="gTY-Ny-boI" eventType="editingChanged" id="n3R-2Y-Fme"/>
-                                </connections>
-                            </textField>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Jx3-tr-lgE" userLabel="検索結果">
-                                <rect key="frame" x="76" y="494" width="288" height="128"/>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Jx3-tr-lgE" userLabel="検索結果">
+                                <rect key="frame" x="49" y="818" width="288" height="128"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="baR-zl-Blg"/>
                                 </constraints>
                             </tableView>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="到着駅" borderStyle="roundedRect" placeholder="例. 渋谷" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1tA-L0-yVB" userLabel="到着駅の入力">
-                                <rect key="frame" x="70" y="236" width="300" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="Uyb-dn-doO"/>
-                                    <constraint firstAttribute="height" constant="50" id="fdK-Pa-rVN"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="textFieldDidChange:" destination="gTY-Ny-boI" eventType="editingChanged" id="T7f-Sa-hGs"/>
-                                </connections>
-                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="N3c-xs-V2h"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.10091162469999999" green="0.10257629309999999" blue="0.17466425899999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="N3c-xs-V2h" firstAttribute="bottom" secondItem="Jx3-tr-lgE" secondAttribute="bottom" constant="324" id="2Nn-w8-Zde"/>
-                            <constraint firstItem="Ck1-wf-KLj" firstAttribute="top" secondItem="5LN-JW-8MN" secondAttribute="bottom" constant="50" id="48t-gE-eVo"/>
-                            <constraint firstItem="Ck1-wf-KLj" firstAttribute="centerX" secondItem="bcl-oN-n2S" secondAttribute="centerX" id="8kh-kw-ly7"/>
-                            <constraint firstItem="5LN-JW-8MN" firstAttribute="centerX" secondItem="Jx3-tr-lgE" secondAttribute="centerX" id="PxJ-eF-2tB"/>
-                            <constraint firstItem="Jx3-tr-lgE" firstAttribute="leading" secondItem="N3c-xs-V2h" secondAttribute="leading" constant="76" id="Rrm-ed-Beg"/>
+                            <constraint firstItem="N3c-xs-V2h" firstAttribute="trailing" secondItem="VdH-b0-afy" secondAttribute="trailing" constant="20" id="4Xb-Vd-LKo"/>
+                            <constraint firstItem="VdH-b0-afy" firstAttribute="leading" secondItem="N3c-xs-V2h" secondAttribute="leading" constant="20" id="Abb-IA-GSd"/>
                             <constraint firstItem="5LN-JW-8MN" firstAttribute="centerX" secondItem="bcl-oN-n2S" secondAttribute="centerX" id="VkY-X0-zZA"/>
-                            <constraint firstItem="1tA-L0-yVB" firstAttribute="top" secondItem="Ck1-wf-KLj" secondAttribute="bottom" constant="30" id="bsh-wm-fNA"/>
                             <constraint firstItem="5LN-JW-8MN" firstAttribute="leading" secondItem="N3c-xs-V2h" secondAttribute="leading" id="eUS-3K-FCq"/>
-                            <constraint firstItem="1tA-L0-yVB" firstAttribute="centerX" secondItem="bcl-oN-n2S" secondAttribute="centerX" id="x66-VF-rI4"/>
-                            <constraint firstItem="5LN-JW-8MN" firstAttribute="top" secondItem="N3c-xs-V2h" secondAttribute="top" constant="50" id="xnr-kx-Zve"/>
+                            <constraint firstItem="VdH-b0-afy" firstAttribute="top" secondItem="5LN-JW-8MN" secondAttribute="bottom" constant="20" id="qqF-Oh-bYK"/>
+                            <constraint firstItem="5LN-JW-8MN" firstAttribute="top" secondItem="N3c-xs-V2h" secondAttribute="top" constant="20" id="xnr-kx-Zve"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="departureTextField" destination="Ck1-wf-KLj" id="LtL-Ce-mJW"/>
-                        <outlet property="destinationTextField" destination="1tA-L0-yVB" id="1Qe-7V-yfp"/>
                         <outlet property="tableView" destination="Jx3-tr-lgE" id="Q9I-zZ-gK3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6MZ-jN-TFP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="882" y="-35"/>
+            <point key="canvasLocation" x="880.90909090909099" y="-35.146443514644353"/>
         </scene>
     </scenes>
     <resources>
