@@ -32,21 +32,32 @@ class UserSettings {
        - destination: 保存する行き先駅のStationオブジェクト
      */
     
-    // Station構造体はStation.swiftに定義されている前提
-    func saveStations(departure: Station, destination: Station) {
+    func saveStations(departure: Station?, destination: Station?) {
         let defaults = UserDefaults.standard
 
+        if let departure = departure {
+            // 出発駅の情報を各キーに対応させて保存
+            defaults.set(departure.name, forKey: Keys.departureStationName)
+            defaults.set(departure.id, forKey: Keys.departureStationID)
+            defaults.set(departure.directionID, forKey: Keys.departureStationDirectionID)
+        } else {
+            // データがない場合はキー自体を削除
+            defaults.removeObject(forKey: Keys.departureStationName)
+            defaults.removeObject(forKey: Keys.departureStationID)
+            defaults.removeObject(forKey: Keys.departureStationDirectionID)
+        }
 
-        // 出発駅の情報を各キーに対応させて保存
-        defaults.set(departure.name, forKey: Keys.departureStationName)
-        defaults.set(departure.id, forKey: Keys.departureStationID)
-        defaults.set(departure.directionID, forKey: Keys.departureStationDirectionID)
-
-
-        // 行き先駅の情報を各キーに対応させて保存
-        defaults.set(destination.name, forKey: Keys.destinationStationName)
-        defaults.set(destination.id, forKey: Keys.destinationStationID)
-        defaults.set(destination.directionID, forKey: Keys.destinationStationDirectionID)
+        if let destination = destination {
+            // 行き先駅の情報を各キーに対応させて保存
+            defaults.set(destination.name, forKey: Keys.destinationStationName)
+            defaults.set(destination.id, forKey: Keys.destinationStationID)
+            defaults.set(destination.directionID, forKey: Keys.destinationStationDirectionID)
+        } else {
+            // データがない場合はキー自体を削除
+            defaults.removeObject(forKey: Keys.destinationStationName)
+            defaults.removeObject(forKey: Keys.destinationStationID)
+            defaults.removeObject(forKey: Keys.destinationStationDirectionID)
+        }
     }
 
 

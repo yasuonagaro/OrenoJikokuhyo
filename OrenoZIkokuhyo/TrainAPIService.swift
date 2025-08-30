@@ -5,7 +5,7 @@ class TrainAPIService {
 
 
     func fetchTimetable(stationID: String, directionID: String, calendar: String) async throws -> [TimetableObject] {
-        var components = URLComponents(string: "[https://api.odpt.org/api/v4/odpt:StationTimetable](https://api.odpt.org/api/v4/odpt:StationTimetable)")!
+        var components = URLComponents(string: "https://api.odpt.org/api/v4/odpt:StationTimetable")!
         components.queryItems = [
             URLQueryItem(name: "acl:consumerKey", value: accessToken),
             URLQueryItem(name: "odpt:station", value: stationID),

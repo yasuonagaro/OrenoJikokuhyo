@@ -9,7 +9,7 @@ import UIKit
 
 // 設定完了をMainViewControllerに通知するためのプロトコル
 protocol SettingsViewControllerDelegate: AnyObject {
-    func didFinishSetting(departure: Station, destination: Station)
+    func didFinishSetting(departure: Station?, destination: Station?)
 }
 
 class ViewController: UIViewController, SettingsViewControllerDelegate {
@@ -34,16 +34,8 @@ class ViewController: UIViewController, SettingsViewControllerDelegate {
         if let stations = UserSettings.shared.loadStations() {
             self.departureStation = stations.departure
             self.destinationStation = stations.destination
-            updateStationLabels()
-        } else {
-            // 初回起動時などの表示
-            currentStationsLabel.text = "駅を設定してください"
-            departureTimeLabel.text = "--:--"
-            lineDetailLabel.text = ""
-            countdownLabel.text = "--:--"
-            nextDepartureTimeLabel.text = "--:--"
-            nextCountdownLabel.text = "--:--"
-        }
+        } 
+        updateStationLabels()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,11 +52,15 @@ class ViewController: UIViewController, SettingsViewControllerDelegate {
             guard let settingsVC = segue.destination as? SettingsViewController else { return }
             // delegateを設定して、設定完了を自身に通知させる
             settingsVC.delegate = self
+            
+            // 現在設定されている駅の情報を設定画面に渡す
+            settingsVC.initialDeparture = self.departureStation
+            settingsVC.initialDestination = self.destinationStation
         }
     }
     
     // SettingsViewControllerDelegateメソッド
-    func didFinishSetting(departure: Station, destination: Station) {
+    func didFinishSetting(departure: Station?, destination: Station?) {
         self.departureStation = departure
         self.destinationStation = destination
         
@@ -76,8 +72,19 @@ class ViewController: UIViewController, SettingsViewControllerDelegate {
     
     // MARK: - Private Methods
     private func updateStationLabels() {
-        guard let departure = departureStation, let destination = destinationStation else { return }
-        currentStationsLabel.text = "\(departure.name) → \(destination.name)"
+        if let departure = departureStation, let destination = destinationStation {
+            currentStationsLabel.text = "\(departure.name) → \(destination.name)"
+        } else {
+            // 駅が未設定の場合の表示
+            currentStationsLabel.text = "駅を設定してください"
+            departureTimeLabel.text = "--:--"
+            lineDetailLabel.text = ""
+            countdownLabel.text = "--:--"
+            nextDepartureTimeLabel.text = "--:--"
+            nextCountdownLabel.text = "--:--"
+            departures = []
+            countdownTimer?.invalidate()
+        }
     }
     
     private func fetchAndDisplayTimetable() {

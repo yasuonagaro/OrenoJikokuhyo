@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="440" height="956"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="shA-dP-lS0" userLabel="上部ボックス" customClass="CustomLabel" customModule="OrenoZIkokuhyo" customModuleProvider="target">
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="shA-dP-lS0" userLabel="上部ボックス">
                                 <rect key="frame" x="20" y="82" width="400" height="62"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UwK-w7-WZA" userLabel="設定ボタン">
@@ -63,7 +63,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bte-cf-wnb" userLabel="中部ボックス" customClass="CustomLabel" customModule="OrenoZIkokuhyo" customModuleProvider="target">
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bte-cf-wnb" userLabel="中部ボックス">
                                 <rect key="frame" x="20" y="164" width="400" height="400"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="mDw-JF-4Sw" userLabel="3段">
@@ -140,6 +140,11 @@
                                         <constraints>
                                             <constraint firstItem="czH-qx-pCX" firstAttribute="centerX" secondItem="mDw-JF-4Sw" secondAttribute="centerX" id="2Y1-wA-etd"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.11372549830000001" green="0.14901961389999999" blue="0.26274511220000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -151,38 +156,43 @@
                                     <constraint firstAttribute="height" constant="400" id="tho-NE-qav"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="20"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.56862747670000002" green="0.69019609689999994" blue="0.97647058959999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yp7-qf-q8g" userLabel="下部ボックス" customClass="CustomLabel" customModule="OrenoZIkokuhyo" customModuleProvider="target">
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yp7-qf-q8g" userLabel="下部ボックス">
                                 <rect key="frame" x="20" y="569" width="400" height="100"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="KI1-u5-Hbc">
-                                        <rect key="frame" x="112.33333333333333" y="40" width="175.33333333333337" height="20.333333333333329"/>
+                                        <rect key="frame" x="80.666666666666671" y="40" width="238.66666666666663" height="20.333333333333329"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="次発: " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rGG-Sl-I53" userLabel="次発ラベル">
-                                                <rect key="frame" x="0.0" y="0.0" width="41" height="20.333333333333332"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="次発時刻: " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rGG-Sl-I53" userLabel="次発ラベル">
+                                                <rect key="frame" x="0.0" y="0.0" width="72.666666666666671" height="20.333333333333332"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="19:15" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7XE-wu-MFL" userLabel="次発時刻">
-                                                <rect key="frame" x="48" y="0.0" width="40" height="20.333333333333332"/>
+                                                <rect key="frame" x="79.666666666666671" y="0.0" width="40" height="20.333333333333332"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.73725497719999999" green="0.80392158030000005" blue="0.82352948189999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="残り: " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="clg-jF-4bY" userLabel="残り">
-                                                <rect key="frame" x="95" y="0.0" width="41" height="20.333333333333332"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="残り時間: " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="clg-jF-4bY" userLabel="残り">
+                                                <rect key="frame" x="126.66666666666666" y="0.0" width="72.666666666666657" height="20.333333333333332"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6:12" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dpf-gz-0h1" userLabel="次発カウントダウン">
-                                                <rect key="frame" x="142.99999999999997" y="0.0" width="32.333333333333343" height="20.333333333333332"/>
+                                                <rect key="frame" x="206.33333333333331" y="0.0" width="32.333333333333343" height="20.333333333333332"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.73725497719999999" green="0.80392158030000005" blue="0.82352948189999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <nil key="highlightedColor"/>
@@ -201,6 +211,15 @@
                                         <integer key="value" value="20"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.56862747670000002" green="0.69019609689999994" blue="0.97647058959999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
@@ -261,6 +280,9 @@
                                 </items>
                                 <navigationBarAppearance key="standardAppearance">
                                     <color key="backgroundColor" red="0.10091162469999999" green="0.10257629309999999" blue="0.17466425899999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <textAttributes key="titleTextAttributes">
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </textAttributes>
                                 </navigationBarAppearance>
                                 <navigationBarAppearance key="scrollEdgeAppearance"/>
                             </navigationBar>
@@ -279,12 +301,33 @@
                                                         <color key="textColor" red="0.56862747670000002" green="0.69019609689999994" blue="0.97647058959999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="出発駅" borderStyle="roundedRect" placeholder="例. 桜新町" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KSy-Gc-fBn" userLabel="出発駅入力">
+                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="例. 桜新町" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KSy-Gc-fBn" userLabel="出発駅入力">
                                                         <rect key="frame" x="0.0" y="27.33333333333335" width="360" height="73.666666666666686"/>
                                                         <color key="backgroundColor" red="0.090196087960000004" green="0.1176470518" blue="0.2117646933" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                        <color key="textColor" red="0.4588235021" green="0.4588235021" blue="0.4588235021" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                         <textInputTraits key="textInputTraits"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                                <integer key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="10"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" red="0.56862747670000002" green="0.69019609689999994" blue="0.97647058959999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                <real key="value" value="0.5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="10"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="textFieldDidChange:" destination="gTY-Ny-boI" eventType="editingChanged" id="pGf-kY-s8c"/>
+                                                        </connections>
                                                     </textField>
                                                 </subviews>
                                                 <constraints>
@@ -301,12 +344,33 @@
                                                         <color key="textColor" red="0.56862747670000002" green="0.69019609689999994" blue="0.97647058959999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="到着駅" borderStyle="roundedRect" placeholder="例. 渋谷" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qq9-q3-tXk" userLabel="到着駅入力">
+                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="例. 渋谷" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qq9-q3-tXk" userLabel="到着駅入力">
                                                         <rect key="frame" x="0.0" y="27.333333333333321" width="360" height="73.666666666666686"/>
                                                         <color key="backgroundColor" red="0.090196087960000004" green="0.1176470518" blue="0.2117646933" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                        <color key="textColor" red="0.4588235021" green="0.4588235021" blue="0.4588235021" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                         <textInputTraits key="textInputTraits"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="10"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                                <integer key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" red="0.56862747670000002" green="0.69019609689999994" blue="0.97647058959999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                <real key="value" value="0.5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="10"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="textFieldDidChange:" destination="gTY-Ny-boI" eventType="editingChanged" id="L9s-tS-c7P"/>
+                                                        </connections>
                                                     </textField>
                                                 </subviews>
                                                 <constraints>
@@ -334,28 +398,82 @@
                                     <constraint firstItem="z1C-uK-Tfg" firstAttribute="centerY" secondItem="VdH-b0-afy" secondAttribute="centerY" id="j8Q-Dl-9u6"/>
                                     <constraint firstAttribute="height" constant="300" id="lYM-TO-ZOM"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.56862747670000002" green="0.69019609689999994" blue="0.97647058959999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Jx3-tr-lgE" userLabel="検索結果">
-                                <rect key="frame" x="49" y="818" width="288" height="128"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Jx3-tr-lgE" userLabel="検索結果">
+                                <rect key="frame" x="20" y="401" width="400" height="200"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="baR-zl-Blg"/>
+                                    <constraint firstAttribute="height" constant="200" id="vyS-Rw-QTy"/>
                                 </constraints>
+                                <color key="sectionIndexBackgroundColor" red="0.1185071841" green="0.15844202039999999" blue="0.27170079949999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="StationCell" id="P1Y-iV-3jD">
+                                        <rect key="frame" x="0.0" y="50" width="400" height="44.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="P1Y-iV-3jD" id="bV0-0L-c6d">
+                                            <rect key="frame" x="0.0" y="0.0" width="400" height="44.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.1071038023" green="0.1425863802" blue="0.24451732640000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </tableViewCell>
+                                </prototypes>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.56862747670000002" green="0.69019609689999994" blue="0.97647058959999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="N3c-xs-V2h"/>
                         <color key="backgroundColor" red="0.10091162469999999" green="0.10257629309999999" blue="0.17466425899999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="N3c-xs-V2h" firstAttribute="trailing" secondItem="VdH-b0-afy" secondAttribute="trailing" constant="20" id="4Xb-Vd-LKo"/>
+                            <constraint firstItem="Jx3-tr-lgE" firstAttribute="leading" secondItem="N3c-xs-V2h" secondAttribute="leading" constant="20" id="8Jx-sB-30D"/>
                             <constraint firstItem="VdH-b0-afy" firstAttribute="leading" secondItem="N3c-xs-V2h" secondAttribute="leading" constant="20" id="Abb-IA-GSd"/>
+                            <constraint firstItem="Jx3-tr-lgE" firstAttribute="top" secondItem="VdH-b0-afy" secondAttribute="bottom" constant="5" id="Vk1-Qe-XfT"/>
                             <constraint firstItem="5LN-JW-8MN" firstAttribute="centerX" secondItem="bcl-oN-n2S" secondAttribute="centerX" id="VkY-X0-zZA"/>
+                            <constraint firstItem="N3c-xs-V2h" firstAttribute="trailing" secondItem="Jx3-tr-lgE" secondAttribute="trailing" constant="20" id="YM9-nk-R6v"/>
                             <constraint firstItem="5LN-JW-8MN" firstAttribute="leading" secondItem="N3c-xs-V2h" secondAttribute="leading" id="eUS-3K-FCq"/>
                             <constraint firstItem="VdH-b0-afy" firstAttribute="top" secondItem="5LN-JW-8MN" secondAttribute="bottom" constant="20" id="qqF-Oh-bYK"/>
                             <constraint firstItem="5LN-JW-8MN" firstAttribute="top" secondItem="N3c-xs-V2h" secondAttribute="top" constant="20" id="xnr-kx-Zve"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="departureTextField" destination="KSy-Gc-fBn" id="iJm-mL-h9B"/>
+                        <outlet property="destinationTextField" destination="Qq9-q3-tXk" id="4CH-uQ-DSW"/>
                         <outlet property="tableView" destination="Jx3-tr-lgE" id="Q9I-zZ-gK3"/>
+                        <outlet property="tableViewHeightConstraint" destination="vyS-Rw-QTy" id="EaC-cM-W4A"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6MZ-jN-TFP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
