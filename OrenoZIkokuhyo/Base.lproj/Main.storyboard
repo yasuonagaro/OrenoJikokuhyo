@@ -16,98 +16,140 @@
                         <rect key="frame" x="0.0" y="0.0" width="440" height="956"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UwK-w7-WZA">
-                                <rect key="frame" x="368" y="62" width="72" height="35"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="駅設定"/>
-                                <connections>
-                                    <segue destination="gTY-Ny-boI" kind="presentation" identifier="toSettings" id="igh-70-Lu7"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="発時刻情報" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KXu-aD-Hw0" userLabel="出発時刻">
-                                <rect key="frame" x="20" y="212" width="200" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="A9W-DW-yn0"/>
-                                    <constraint firstAttribute="height" constant="50" id="OyD-0m-ter"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="次発時刻情報" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7XE-wu-MFL" userLabel="次発時刻">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="次発時刻情報" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7XE-wu-MFL" userLabel="次発時刻">
                                 <rect key="frame" x="20" y="453" width="200" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="9jT-MP-Sq4"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="w0e-uc-ROX"/>
-                                </constraints>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="発車カウントダウン" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rZ8-6v-3je" userLabel="発車カウントダウン">
-                                <rect key="frame" x="220" y="212" width="200" height="50"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="次発カウントダウン" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dpf-gz-0h1" userLabel="次発カウントダウン">
+                                <rect key="frame" x="120" y="453" width="200" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="NotoSansOriya-Bold" family="Noto Sans Oriya" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="shA-dP-lS0" userLabel="上部ボックス" customClass="CustomLabel" customModule="OrenoZIkokuhyo" customModuleProvider="target">
+                                <rect key="frame" x="20" y="82" width="400" height="62"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UwK-w7-WZA" userLabel="設定ボタン">
+                                        <rect key="frame" x="362" y="17" width="28" height="28"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="28" id="8Zl-Ay-Yfu"/>
+                                            <constraint firstAttribute="height" constant="28" id="ung-0X-ZS5"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="gearshape.fill" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="22"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="gTY-Ny-boI" kind="presentation" identifier="toSettings" id="igh-70-Lu7"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="現在の駅設定" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="985-os-moQ" userLabel="現在の駅設定">
+                                        <rect key="frame" x="10" y="20.333333333333329" width="101.33333333333333" height="21.666666666666671"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                        <size key="shadowOffset" width="0.0" height="0.0"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.082352943720000002" green="0.082352943720000002" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="szv-y4-VRP"/>
-                                    <constraint firstAttribute="height" constant="50" id="yqW-xl-SZQ"/>
+                                    <constraint firstItem="UwK-w7-WZA" firstAttribute="centerY" secondItem="shA-dP-lS0" secondAttribute="centerY" id="A5m-1O-SC9"/>
+                                    <constraint firstAttribute="trailing" secondItem="UwK-w7-WZA" secondAttribute="trailing" constant="10" id="cVc-bu-HSs"/>
+                                    <constraint firstAttribute="height" constant="62" id="rBd-PF-eie"/>
+                                    <constraint firstItem="985-os-moQ" firstAttribute="leading" secondItem="shA-dP-lS0" secondAttribute="leading" constant="10" id="v3f-5t-KcO"/>
+                                    <constraint firstItem="985-os-moQ" firstAttribute="centerY" secondItem="shA-dP-lS0" secondAttribute="centerY" id="y9H-n4-Csd"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="次発カウントダウン" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dpf-gz-0h1" userLabel="次発カウントダウン">
-                                <rect key="frame" x="220" y="453" width="200" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="HQh-uP-Pvi"/>
-                                    <constraint firstAttribute="width" constant="200" id="TMO-vD-MJM"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="現在の駅設定" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="985-os-moQ" userLabel="現在の駅設定">
-                                <rect key="frame" x="70" y="112" width="300" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="2lJ-JU-jDb"/>
-                                    <constraint firstAttribute="width" constant="300" id="DhT-Zg-Uuv"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="発車情報詳細" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8oN-OQ-fXh" userLabel="発車情報詳細">
-                                <rect key="frame" x="172" y="292" width="96" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CSW-5m-LQX" userLabel="区切り線">
-                                <rect key="frame" x="20" y="343" width="400" height="1"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                             </view>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bte-cf-wnb" userLabel="中部ボックス" customClass="CustomLabel" customModule="OrenoZIkokuhyo" customModuleProvider="target">
+                                <rect key="frame" x="20" y="164" width="400" height="250"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="発車時刻" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ip6-5O-1Ks" userLabel="発車時刻ラベル">
+                                        <rect key="frame" x="168.33333333333334" y="20" width="63.666666666666657" height="20.333333333333329"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="19:12" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KXu-aD-Hw0" userLabel="出発時刻">
+                                        <rect key="frame" x="105.33333333333333" y="50.333333333333343" width="189.33333333333337" height="92"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="77"/>
+                                        <color key="textColor" systemColor="systemPinkColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <size key="shadowOffset" width="0.0" height="0.0"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="GPc-0q-kH2">
+                                        <rect key="frame" x="136.33333333333334" y="189.33333333333331" width="127.66666666666666" height="40.666666666666657"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="あと" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vGe-cw-75M" userLabel="残り時間ラベル">
+                                                <rect key="frame" x="0.0" y="0.0" width="32" height="40.666666666666664"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="03:12" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rZ8-6v-3je" userLabel="発車カウントダウン">
+                                                <rect key="frame" x="37.000000000000007" y="0.0" width="90.666666666666686" height="40.666666666666664"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="34"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                                <size key="shadowOffset" width="0.0" height="0.0"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="残り時間" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sft-np-Dbx" userLabel="残り時間ラベル">
+                                        <rect key="frame" x="168.33333333333334" y="159" width="63.666666666666657" height="20.333333333333343"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.11372549830000001" green="0.14901961389999999" blue="0.26274511220000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstItem="KXu-aD-Hw0" firstAttribute="top" secondItem="Ip6-5O-1Ks" secondAttribute="bottom" constant="10" id="4cD-bM-kyj"/>
+                                    <constraint firstItem="KXu-aD-Hw0" firstAttribute="centerX" secondItem="Bte-cf-wnb" secondAttribute="centerX" id="F2n-9k-uVy"/>
+                                    <constraint firstItem="Ip6-5O-1Ks" firstAttribute="top" secondItem="Bte-cf-wnb" secondAttribute="top" constant="20" id="FsD-6v-z44"/>
+                                    <constraint firstItem="Sft-np-Dbx" firstAttribute="centerX" secondItem="Bte-cf-wnb" secondAttribute="centerX" id="HLn-0I-zck"/>
+                                    <constraint firstItem="Ip6-5O-1Ks" firstAttribute="centerX" secondItem="Bte-cf-wnb" secondAttribute="centerX" id="OPi-pv-T6Y"/>
+                                    <constraint firstAttribute="bottom" secondItem="GPc-0q-kH2" secondAttribute="bottom" constant="20" id="ScI-32-tQt"/>
+                                    <constraint firstItem="GPc-0q-kH2" firstAttribute="centerX" secondItem="Bte-cf-wnb" secondAttribute="centerX" id="eOa-8P-pfs"/>
+                                    <constraint firstAttribute="height" constant="250" id="ecU-CX-gVC"/>
+                                    <constraint firstItem="GPc-0q-kH2" firstAttribute="top" secondItem="Sft-np-Dbx" secondAttribute="bottom" constant="10" id="xgh-wL-nM9"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="発車情報詳細" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8oN-OQ-fXh" userLabel="発車情報詳細">
+                                <rect key="frame" x="125" y="626" width="108" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="NotoSansOriya-Bold" family="Noto Sans Oriya" pointSize="18"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.1019607931" green="0.1019607931" blue="0.1764705926" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="8oN-OQ-fXh" firstAttribute="top" secondItem="KXu-aD-Hw0" secondAttribute="bottom" constant="30" id="1a3-pT-RVH"/>
-                            <constraint firstItem="985-os-moQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2VX-Yt-jgH"/>
-                            <constraint firstItem="985-os-moQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="2vi-tO-juo"/>
-                            <constraint firstItem="CSW-5m-LQX" firstAttribute="top" secondItem="8oN-OQ-fXh" secondAttribute="bottom" constant="30" id="2zL-7d-gUY"/>
-                            <constraint firstItem="7XE-wu-MFL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="87D-bW-R1h"/>
-                            <constraint firstItem="985-os-moQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9P3-lp-f1V"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="CSW-5m-LQX" secondAttribute="trailing" id="C0M-5w-dxg"/>
-                            <constraint firstItem="KXu-aD-Hw0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Cu4-qY-yrT"/>
-                            <constraint firstItem="CSW-5m-LQX" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="E8Y-cW-JqX"/>
-                            <constraint firstItem="KXu-aD-Hw0" firstAttribute="top" secondItem="985-os-moQ" secondAttribute="bottom" constant="50" id="IUa-9U-alK"/>
-                            <constraint firstItem="CSW-5m-LQX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="JcG-mm-MdV"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="UwK-w7-WZA" secondAttribute="trailing" id="LjV-Cx-FdB"/>
-                            <constraint firstItem="8oN-OQ-fXh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="MHu-Eu-rWH"/>
-                            <constraint firstItem="dpf-gz-0h1" firstAttribute="top" secondItem="CSW-5m-LQX" secondAttribute="bottom" constant="30" id="Ste-78-EQa"/>
-                            <constraint firstItem="UwK-w7-WZA" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="chx-WY-aGo"/>
-                            <constraint firstItem="rZ8-6v-3je" firstAttribute="top" secondItem="985-os-moQ" secondAttribute="bottom" constant="50" id="css-d8-kLO"/>
-                            <constraint firstItem="7XE-wu-MFL" firstAttribute="top" secondItem="CSW-5m-LQX" secondAttribute="bottom" constant="30" id="daz-QN-7kp"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="rZ8-6v-3je" secondAttribute="trailing" constant="20" id="orl-pd-kgH"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dpf-gz-0h1" secondAttribute="trailing" constant="20" id="qHp-Do-YBD"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="7XE-wu-MFL" secondAttribute="bottom" constant="419" id="ygk-oQ-jtY"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Bte-cf-wnb" secondAttribute="trailing" constant="20" id="4lX-0g-RTR"/>
+                            <constraint firstItem="Bte-cf-wnb" firstAttribute="top" secondItem="shA-dP-lS0" secondAttribute="bottom" constant="20" id="LHG-Ek-OoF"/>
+                            <constraint firstItem="Bte-cf-wnb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="ROf-Zs-bJf"/>
+                            <constraint firstItem="shA-dP-lS0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="T9D-cN-9qC"/>
+                            <constraint firstItem="Bte-cf-wnb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YkS-IK-b71"/>
+                            <constraint firstItem="shA-dP-lS0" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="nbc-e2-AsI"/>
+                            <constraint firstItem="shA-dP-lS0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="o6I-0A-DcJ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="shA-dP-lS0" secondAttribute="trailing" constant="20" id="r5X-Dp-gao"/>
                         </constraints>
                     </view>
                     <connections>
@@ -208,8 +250,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="gearshape.fill" catalog="system" width="128" height="123"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
