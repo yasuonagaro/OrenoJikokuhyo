@@ -1,13 +1,13 @@
 //
-//  OrenoZIkokuhyoUITestsLaunchTests.swift
-//  OrenoZIkokuhyoUITests
+//  OrenoJikokuhyoUITestsLaunchTests.swift
+//  OrenoJikokuhyoUITests
 //
 //  Created by ynagaro on 2025/08/30.
 //
 
 import XCTest
 
-final class OrenoZIkokuhyoUITestsLaunchTests: XCTestCase {
+final class OrenoJikokuhyoUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true

@@ -1,13 +1,13 @@
 //
-//  OrenoZIkokuhyoUITests.swift
-//  OrenoZIkokuhyoUITests
+//  OrenoJikokuhyoUITests.swift
+//  OrenoJikokuhyoUITests
 //
 //  Created by ynagaro on 2025/08/30.
 //
 
 import XCTest
 
-final class OrenoZIkokuhyoUITests: XCTestCase {
+final class OrenoJikokuhyoUITests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

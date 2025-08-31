@@ -12,50 +12,50 @@
 			containerPortal = 1B4F93C82E62BFDF00486231 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 1B4F93CF2E62BFDF00486231;
-			remoteInfo = OrenoZIkokuhyo;
+			remoteInfo = OrenoJikokuhyo;
 		};
 		1B4F93F12E62BFE000486231 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1B4F93C82E62BFDF00486231 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 1B4F93CF2E62BFDF00486231;
-			remoteInfo = OrenoZIkokuhyo;
+			remoteInfo = OrenoJikokuhyo;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1B4F93D02E62BFDF00486231 /* OrenoZIkokuhyo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OrenoZIkokuhyo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		1B4F93E62E62BFE000486231 /* OrenoZIkokuhyoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OrenoZIkokuhyoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1B4F93F02E62BFE000486231 /* OrenoZIkokuhyoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OrenoZIkokuhyoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B4F93D02E62BFDF00486231 /* OrenoJikokuhyo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OrenoJikokuhyo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B4F93E62E62BFE000486231 /* OrenoJikokuhyoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OrenoJikokuhyoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B4F93F02E62BFE000486231 /* OrenoJikokuhyoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OrenoJikokuhyoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		1B4F93F82E62BFE000486231 /* Exceptions for "OrenoZIkokuhyo" folder in "OrenoZIkokuhyo" target */ = {
+		1B4F93F82E62BFE000486231 /* Exceptions for "OrenoJikokuhyo" folder in "OrenoJikokuhyo" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
 			);
-			target = 1B4F93CF2E62BFDF00486231 /* OrenoZIkokuhyo */;
+			target = 1B4F93CF2E62BFDF00486231 /* OrenoJikokuhyo */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		1B4F93D22E62BFDF00486231 /* OrenoZIkokuhyo */ = {
+		1B4F93D22E62BFDF00486231 /* OrenoJikokuhyo */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				1B4F93F82E62BFE000486231 /* Exceptions for "OrenoZIkokuhyo" folder in "OrenoZIkokuhyo" target */,
+				1B4F93F82E62BFE000486231 /* Exceptions for "OrenoJikokuhyo" folder in "OrenoJikokuhyo" target */,
 			);
-			path = OrenoZIkokuhyo;
+			path = OrenoJikokuhyo;
 			sourceTree = "<group>";
 		};
-		1B4F93E92E62BFE000486231 /* OrenoZIkokuhyoTests */ = {
+		1B4F93E92E62BFE000486231 /* OrenoJikokuhyoTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = OrenoZIkokuhyoTests;
+			path = OrenoJikokuhyoTests;
 			sourceTree = "<group>";
 		};
-		1B4F93F32E62BFE000486231 /* OrenoZIkokuhyoUITests */ = {
+		1B4F93F32E62BFE000486231 /* OrenoJikokuhyoUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = OrenoZIkokuhyoUITests;
+			path = OrenoJikokuhyoUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -88,9 +88,9 @@
 		1B4F93C72E62BFDF00486231 = {
 			isa = PBXGroup;
 			children = (
-				1B4F93D22E62BFDF00486231 /* OrenoZIkokuhyo */,
-				1B4F93E92E62BFE000486231 /* OrenoZIkokuhyoTests */,
-				1B4F93F32E62BFE000486231 /* OrenoZIkokuhyoUITests */,
+				1B4F93D22E62BFDF00486231 /* OrenoJikokuhyo */,
+				1B4F93E92E62BFE000486231 /* OrenoJikokuhyoTests */,
+				1B4F93F32E62BFE000486231 /* OrenoJikokuhyoUITests */,
 				1B4F93D12E62BFDF00486231 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -98,9 +98,9 @@
 		1B4F93D12E62BFDF00486231 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1B4F93D02E62BFDF00486231 /* OrenoZIkokuhyo.app */,
-				1B4F93E62E62BFE000486231 /* OrenoZIkokuhyoTests.xctest */,
-				1B4F93F02E62BFE000486231 /* OrenoZIkokuhyoUITests.xctest */,
+				1B4F93D02E62BFDF00486231 /* OrenoJikokuhyo.app */,
+				1B4F93E62E62BFE000486231 /* OrenoJikokuhyoTests.xctest */,
+				1B4F93F02E62BFE000486231 /* OrenoJikokuhyoUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -108,9 +108,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1B4F93CF2E62BFDF00486231 /* OrenoZIkokuhyo */ = {
+		1B4F93CF2E62BFDF00486231 /* OrenoJikokuhyo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1B4F93F92E62BFE000486231 /* Build configuration list for PBXNativeTarget "OrenoZIkokuhyo" */;
+			buildConfigurationList = 1B4F93F92E62BFE000486231 /* Build configuration list for PBXNativeTarget "OrenoJikokuhyo" */;
 			buildPhases = (
 				1B4F93CC2E62BFDF00486231 /* Sources */,
 				1B4F93CD2E62BFDF00486231 /* Frameworks */,
@@ -121,18 +121,18 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				1B4F93D22E62BFDF00486231 /* OrenoZIkokuhyo */,
+				1B4F93D22E62BFDF00486231 /* OrenoJikokuhyo */,
 			);
-			name = OrenoZIkokuhyo;
+			name = OrenoJikokuhyo;
 			packageProductDependencies = (
 			);
-			productName = OrenoZIkokuhyo;
-			productReference = 1B4F93D02E62BFDF00486231 /* OrenoZIkokuhyo.app */;
+			productName = OrenoJikokuhyo;
+			productReference = 1B4F93D02E62BFDF00486231 /* OrenoJikokuhyo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		1B4F93E52E62BFE000486231 /* OrenoZIkokuhyoTests */ = {
+		1B4F93E52E62BFE000486231 /* OrenoJikokuhyoTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1B4F93FE2E62BFE000486231 /* Build configuration list for PBXNativeTarget "OrenoZIkokuhyoTests" */;
+			buildConfigurationList = 1B4F93FE2E62BFE000486231 /* Build configuration list for PBXNativeTarget "OrenoJikokuhyoTests" */;
 			buildPhases = (
 				1B4F93E22E62BFE000486231 /* Sources */,
 				1B4F93E32E62BFE000486231 /* Frameworks */,
@@ -144,18 +144,18 @@
 				1B4F93E82E62BFE000486231 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				1B4F93E92E62BFE000486231 /* OrenoZIkokuhyoTests */,
+				1B4F93E92E62BFE000486231 /* OrenoJikokuhyoTests */,
 			);
-			name = OrenoZIkokuhyoTests;
+			name = OrenoJikokuhyoTests;
 			packageProductDependencies = (
 			);
-			productName = OrenoZIkokuhyoTests;
-			productReference = 1B4F93E62E62BFE000486231 /* OrenoZIkokuhyoTests.xctest */;
+			productName = OrenoJikokuhyoTests;
+			productReference = 1B4F93E62E62BFE000486231 /* OrenoJikokuhyoTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		1B4F93EF2E62BFE000486231 /* OrenoZIkokuhyoUITests */ = {
+		1B4F93EF2E62BFE000486231 /* OrenoJikokuhyoUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1B4F94012E62BFE000486231 /* Build configuration list for PBXNativeTarget "OrenoZIkokuhyoUITests" */;
+			buildConfigurationList = 1B4F94012E62BFE000486231 /* Build configuration list for PBXNativeTarget "OrenoJikokuhyoUITests" */;
 			buildPhases = (
 				1B4F93EC2E62BFE000486231 /* Sources */,
 				1B4F93ED2E62BFE000486231 /* Frameworks */,
@@ -167,13 +167,13 @@
 				1B4F93F22E62BFE000486231 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				1B4F93F32E62BFE000486231 /* OrenoZIkokuhyoUITests */,
+				1B4F93F32E62BFE000486231 /* OrenoJikokuhyoUITests */,
 			);
-			name = OrenoZIkokuhyoUITests;
+			name = OrenoJikokuhyoUITests;
 			packageProductDependencies = (
 			);
-			productName = OrenoZIkokuhyoUITests;
-			productReference = 1B4F93F02E62BFE000486231 /* OrenoZIkokuhyoUITests.xctest */;
+			productName = OrenoJikokuhyoUITests;
+			productReference = 1B4F93F02E62BFE000486231 /* OrenoJikokuhyoUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -199,7 +199,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 1B4F93CB2E62BFDF00486231 /* Build configuration list for PBXProject "OrenoZIkokuhyo" */;
+			buildConfigurationList = 1B4F93CB2E62BFDF00486231 /* Build configuration list for PBXProject "OrenoJikokuhyo" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -213,9 +213,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1B4F93CF2E62BFDF00486231 /* OrenoZIkokuhyo */,
-				1B4F93E52E62BFE000486231 /* OrenoZIkokuhyoTests */,
-				1B4F93EF2E62BFE000486231 /* OrenoZIkokuhyoUITests */,
+				1B4F93CF2E62BFDF00486231 /* OrenoJikokuhyo */,
+				1B4F93E52E62BFE000486231 /* OrenoJikokuhyoTests */,
+				1B4F93EF2E62BFE000486231 /* OrenoJikokuhyoUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -271,12 +271,12 @@
 /* Begin PBXTargetDependency section */
 		1B4F93E82E62BFE000486231 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 1B4F93CF2E62BFDF00486231 /* OrenoZIkokuhyo */;
+			target = 1B4F93CF2E62BFDF00486231 /* OrenoJikokuhyo */;
 			targetProxy = 1B4F93E72E62BFE000486231 /* PBXContainerItemProxy */;
 		};
 		1B4F93F22E62BFE000486231 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 1B4F93CF2E62BFDF00486231 /* OrenoZIkokuhyo */;
+			target = 1B4F93CF2E62BFDF00486231 /* OrenoJikokuhyo */;
 			targetProxy = 1B4F93F12E62BFE000486231 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -291,7 +291,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 37XZGYD5RN;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = OrenoZIkokuhyo/Info.plist;
+				INFOPLIST_FILE = OrenoJikokuhyo/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "俺の時刻表";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -302,7 +303,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = jp.techacademy.ynagaro.OrenoZIkokuhyo;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.techacademy.ynagaro.OrenoJikokuhyo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -323,7 +324,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 37XZGYD5RN;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = OrenoZIkokuhyo/Info.plist;
+				INFOPLIST_FILE = OrenoJikokuhyo/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "俺の時刻表";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -334,7 +336,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = jp.techacademy.ynagaro.OrenoZIkokuhyo;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.techacademy.ynagaro.OrenoJikokuhyo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -475,12 +477,12 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = jp.techacademy.ynagaro.OrenoZIkokuhyoTests;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.techacademy.ynagaro.OrenoJikokuhyoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OrenoZIkokuhyo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/OrenoZIkokuhyo";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OrenoJikokuhyo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/OrenoJikokuhyo";
 			};
 			name = Debug;
 		};
@@ -494,12 +496,12 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = jp.techacademy.ynagaro.OrenoZIkokuhyoTests;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.techacademy.ynagaro.OrenoJikokuhyoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OrenoZIkokuhyo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/OrenoZIkokuhyo";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OrenoJikokuhyo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/OrenoJikokuhyo";
 			};
 			name = Release;
 		};
@@ -511,12 +513,12 @@
 				DEVELOPMENT_TEAM = 37XZGYD5RN;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = jp.techacademy.ynagaro.OrenoZIkokuhyoUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.techacademy.ynagaro.OrenoJikokuhyoUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = OrenoZIkokuhyo;
+				TEST_TARGET_NAME = OrenoJikokuhyo;
 			};
 			name = Debug;
 		};
@@ -528,19 +530,19 @@
 				DEVELOPMENT_TEAM = 37XZGYD5RN;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = jp.techacademy.ynagaro.OrenoZIkokuhyoUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.techacademy.ynagaro.OrenoJikokuhyoUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = OrenoZIkokuhyo;
+				TEST_TARGET_NAME = OrenoJikokuhyo;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1B4F93CB2E62BFDF00486231 /* Build configuration list for PBXProject "OrenoZIkokuhyo" */ = {
+		1B4F93CB2E62BFDF00486231 /* Build configuration list for PBXProject "OrenoJikokuhyo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1B4F93FC2E62BFE000486231 /* Debug */,
@@ -549,7 +551,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1B4F93F92E62BFE000486231 /* Build configuration list for PBXNativeTarget "OrenoZIkokuhyo" */ = {
+		1B4F93F92E62BFE000486231 /* Build configuration list for PBXNativeTarget "OrenoJikokuhyo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1B4F93FA2E62BFE000486231 /* Debug */,
@@ -558,7 +560,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1B4F93FE2E62BFE000486231 /* Build configuration list for PBXNativeTarget "OrenoZIkokuhyoTests" */ = {
+		1B4F93FE2E62BFE000486231 /* Build configuration list for PBXNativeTarget "OrenoJikokuhyoTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1B4F93FF2E62BFE000486231 /* Debug */,
@@ -567,7 +569,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1B4F94012E62BFE000486231 /* Build configuration list for PBXNativeTarget "OrenoZIkokuhyoUITests" */ = {
+		1B4F94012E62BFE000486231 /* Build configuration list for PBXNativeTarget "OrenoJikokuhyoUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1B4F94022E62BFE000486231 /* Debug */,

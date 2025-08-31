@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  OrenoZIkokuhyo
+//  OrenoJikokuhyo
 //
 //  Created by ynagaro on 2025/08/30.
 //
