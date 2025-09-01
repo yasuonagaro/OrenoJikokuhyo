@@ -27,33 +27,24 @@ class ViewController: UIViewController, SettingsViewControllerDelegate, BannerVi
     private var departures: [Departure] = []
     private var countdownTimer: Timer?
     
+    private var adManager: AdManager?
+    private let adUnitID = "ca-app-pub-2578365445147845/9108550209" // メイン画面用広告ユニットID（本番用）はca-app-pub-2578365445147845/9108550209
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // 保存された駅情報を読み込む
         if let stations = UserSettings.shared.loadStations() {
             self.departureStation = stations.departure
             self.destinationStation = stations.destination
-        } 
-        updateStationLabels()
+        }
         
-        // バナー広告の設定
-        bannerView.adUnitID = "ca-app-pub-2578365445147845/9108550209" // テスト用広告ユニットID
-        bannerView.rootViewController = self // バナー広告の表示に必要
-        bannerView.delegate = self // BannerViewDelegateを設定
+        updateStationLabels() // 駅ラベルの更新
         
-        // Google Mobile Ads SDKの初期化
-        MobileAds.shared.start()
-        
-        // バナー広告のサイズを設定
-    
-        let frame = view.frame // 画面全体のフレームを取得
-        let viewWidth = frame.inset(by: view.safeAreaInsets).width // 安全領域を考慮した幅を取得
-        bannerView.adSize = currentOrientationAnchoredAdaptiveBanner(width: viewWidth) // 画面幅に合わせたバナーサイズ
-        
-        // 広告リクエストの作成と読み込み
-        bannerView.load(Request())
-        
-        
+        // AdManagerの初期化
+        adManager = AdManager()
+
+        // バナー広告の読み込み
+        adManager?.startGoogleMobileAdsSDK(bannerView: bannerView, rootViewController: self, in: self.view, adUnitID: adUnitID)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -230,33 +221,5 @@ class ViewController: UIViewController, SettingsViewControllerDelegate, BannerVi
         super.viewDidDisappear(animated)
         countdownTimer?.invalidate()
         countdownTimer = nil
-    }
-    
-    func bannerViewDidReceiveAd(_ bannerView: BannerView) {
-      print(#function)
-    }
-
-    func bannerView(_ bannerView: BannerView, didFailToReceiveAdWithError error: Error) {
-      print(#function + ": " + error.localizedDescription)
-    }
-
-    func bannerViewDidRecordClick(_ bannerView: BannerView) {
-      print(#function)
-    }
-
-    func bannerViewDidRecordImpression(_ bannerView: BannerView) {
-      print(#function)
-    }
-
-    func bannerViewWillPresentScreen(_ bannerView: BannerView) {
-      print(#function)
-    }
-
-    func bannerViewWillDismissScreen(_ bannerView: BannerView) {
-      print(#function)
-    }
-
-    func bannerViewDidDismissScreen(_ bannerView: BannerView) {
-      print(#function)
     }
 }

@@ -1,4 +1,5 @@
 import UIKit
+import GoogleMobileAds
 
 class SettingsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
 
@@ -6,6 +7,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet weak var destinationTextField: UITextField!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var bannerView: BannerView! // バナー広告表示用のビュー
 
     // MainViewControllerから渡される現在の設定
     var initialDeparture: Station?
@@ -23,6 +25,9 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     // この画面で選択された駅
     private var selectedDeparture: Station?
     private var selectedDestination: Station?
+    
+    private var adManager: AdManager?
+    private let adUnitID = "ca-app-pub-2578365445147845/7568523231" // 設定画面用広告ユニットID（本番用）はca-app-pub-2578365445147845/7568523231
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,6 +62,12 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
                 attributes: [NSAttributedString.Key.foregroundColor: placeholderColor]
             )
         }
+        
+        // AdManagerの初期化
+        adManager = AdManager()
+
+        // バナー広告の読み込み
+        adManager?.startGoogleMobileAdsSDK(bannerView: bannerView, rootViewController: self, in: self.view, adUnitID: adUnitID)
     }
 
     // MARK: - Actions
