@@ -1,72 +1,66 @@
+//
+//  SettingsViewController.swift
+//  OrenoJikokuhyo
+//
+
 import UIKit
 import GoogleMobileAds
 
 class SettingsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
 
+    // MARK: - IBOutlets
     @IBOutlet weak var departureTextField: UITextField!
     @IBOutlet weak var destinationTextField: UITextField!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var bannerView: BannerView! // バナー広告表示用のビュー
+    @IBOutlet weak var bannerView: BannerView!
 
-    // ViewControllerから渡される現在の設定
+    // MARK: - Public Properties
     var departure: Station?
     var destination: Station?
-    
-    // MainViewControllerから設定されるdelegate
     weak var delegate: SettingsViewControllerDelegate?
-    
-    // アプリに保存されている全駅リスト
-    private var filteredStations: [Station] = []
 
-    // どのテキストフィールドが編集中かを保持する
+    // MARK: - Private Properties
+    private let apiService = TrainAPIService()
+    private var searchResults: [Station] = []
+    private var searchTimer: Timer?
     private var activeTextField: UITextField?
-
-    // この画面で選択された駅
     private var selectedDeparture: Station?
     private var selectedDestination: Station?
-    
-    private var adManager: AdManager?
-    private let adUnitID = "ca-app-pub-2578365445147845/7568523231" // 設定画面用広告ユニットID（本番用）はca-app-pub-2578365445147845/7568523231
 
+    private var adManager: AdManager?
+    private let adUnitID = "ca-app-pub-2578365445147845/7568523231" // 設定画面用の広告ユニットID
+
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
+        loadInitialData()
+        setupAd()
+    }
+
+    // MARK: - Setup
+    private func setupUI() {
         tableView.dataSource = self
         tableView.delegate = self
         departureTextField.delegate = self
         destinationTextField.delegate = self
-        
-        // 初期状態ではテーブルビューを非表示にする
         tableView.isHidden = true
         
-        // ViewControllerから渡された値を設定
+        let placeholderColor = UIColor(white: 0.667, alpha: 1.0)
+        setTextFieldPlaceholderColor(textField: departureTextField, color: placeholderColor)
+        setTextFieldPlaceholderColor(textField: destinationTextField, color: placeholderColor)
+    }
+
+    private func loadInitialData() {
         selectedDeparture = departure
         selectedDestination = destination
-        
         departureTextField.text = departure?.name
         destinationTextField.text = destination?.name
-        
-        // プレースホルダーの色を設定
-        let placeholderColor = UIColor(white: 0.667, alpha: 1.0)
-        
-        if let departurePlaceholder = departureTextField.placeholder {
-            departureTextField.attributedPlaceholder = NSAttributedString(
-                string: departurePlaceholder,
-                attributes: [NSAttributedString.Key.foregroundColor: placeholderColor]
-            )
-        }
-        
-        if let destinationPlaceholder = destinationTextField.placeholder {
-            destinationTextField.attributedPlaceholder = NSAttributedString(
-                string: destinationPlaceholder,
-                attributes: [NSAttributedString.Key.foregroundColor: placeholderColor]
-            )
-        }
-        
-        // AdManagerの初期化
+    }
+    
+    private func setupAd() {
         adManager = AdManager()
-
-        // バナー広告の読み込み
         adManager?.startGoogleMobileAdsSDK(bannerView: bannerView, rootViewController: self, in: self.view, adUnitID: adUnitID)
     }
 
@@ -76,99 +70,102 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     @IBAction func doneButtonTapped(_ sender: UIBarButtonItem) {
-        // Case 1: Both stations are set
-        if let departure = selectedDeparture, let destination = selectedDestination {
-            // Check if they are the same station
-            if departure.nodeID == destination.nodeID {
-                let alert = UIAlertController(title: "入力エラー", message: "出発駅と到着駅には同じ駅を設定できません。", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-                return
-            }
-            
-            // If they are different, proceed to save
-            delegate?.didFinishSetting(departure: departure, destination: destination)
-            dismiss(animated: true)
-
-        // Case 2: Both stations are NOT set (i.e., they are nil)
-        } else if selectedDeparture == nil && selectedDestination == nil {
-            // This is a valid "reset" state, proceed to save
-            delegate?.didFinishSetting(departure: nil, destination: nil)
-            dismiss(animated: true)
-
-        // Case 3: Only one of the two is set (invalid state)
-        } else {
-            let alert = UIAlertController(title: "入力エラー", message: "出発駅と到着駅を両方とも設定するか、両方とも空にしてください。", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+        // 出発駅と到着駅が同じ場合はエラー
+        if let departure = selectedDeparture, let destination = selectedDestination, departure.nodeID == destination.nodeID {
+            showAlert(title: "入力エラー", message: "出発駅と到着駅には同じ駅を設定できません。")
+            return
         }
-    }
-
-    // MARK: - UITextFieldDelegate
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        activeTextField = textField
-        // 編集開始時にリストを更新して表示
-        refreshStationList(for: textField)
+        
+        // 両方設定されているか、両方空の場合のみ delegate を呼ぶ
+        if (selectedDeparture != nil && selectedDestination != nil) || (selectedDeparture == nil && selectedDestination == nil) {
+            delegate?.didFinishSetting(departure: selectedDeparture, destination: selectedDestination)
+            dismiss(animated: true)
+        } else {
+            showAlert(title: "入力エラー", message: "出発駅と到着駅を両方とも設定するか、両方とも空にしてください。")
+        }
     }
 
     @IBAction func textFieldDidChange(_ sender: UITextField) {
-        // テキストが空になったら、対応する駅の選択を解除
-        if sender.text?.isEmpty ?? true {
-            if sender == departureTextField {
-                selectedDeparture = nil
-            } else if sender == destinationTextField {
-                selectedDestination = nil
-            }
+        // 既存のタイマーを無効化
+        searchTimer?.invalidate()
+        
+        // テキストが空なら検索結果をクリアして非表示にする
+        guard let searchText = sender.text, !searchText.isEmpty else {
+            resetStationSelectionAndList(for: sender)
+            return
         }
-        // 入力のたびにリストを更新
-        refreshStationList(for: sender)
+
+        // 0.3秒の遅延（デバウンス）を設けてAPIを呼び出す
+        searchTimer = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: false, block: { [weak self] _ in
+            self?.performSearch(query: searchText)
+        })
     }
     
-    // 駅の検索結果リストを更新・表示するヘルパーメソッド
-    private func refreshStationList(for textField: UITextField) {
-        let searchText = textField.text ?? ""
-        
-        // UI更新
+    // MARK: - UITextFieldDelegate
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        activeTextField = textField
         tableView.isHidden = false
-        tableView.reloadData()
-        DispatchQueue.main.async {
-            self.updateTableViewHeight()
-        }
-    }
-    
-    private func updateTableViewHeight() {
-        // contentSizeの高さに基づいて制約を更新
-        let contentHeight = tableView.contentSize.height
-        let maxHeight: CGFloat = 300 // テーブルビューの最大の高さ
-        
-        tableViewHeightConstraint.constant = min(contentHeight, maxHeight)
+        updateTableViewHeight()
+        // 編集開始時に即座に検索を実行
+        textFieldDidChange(textField)
     }
 
+    // MARK: - Search Logic
+    private func performSearch(query: String) {
+        // 非同期タスクとしてAPIを呼び出す
+        Task {
+            do {
+                let stations = try await apiService.searchStations(query: query)
+                
+                // メインスreadでUIを更新
+                DispatchQueue.main.async {
+                    self.handleSearchResult(stations: stations)
+                }
+            } catch {
+                print("駅の検索に失敗しました: \(error)")
+                // エラー発生時はリストをクリア
+                DispatchQueue.main.async {
+                    self.clearAndHideTableView()
+                }
+            }
+        }
+    }
+    
+    private func handleSearchResult(stations: [Station]) {
+        // 反対側に設定済みの駅は候補から除外する
+        let stationToExclude = (self.activeTextField == self.departureTextField) ? self.selectedDestination : self.selectedDeparture
+        
+        if let excludeStation = stationToExclude {
+            self.searchResults = stations.filter { $0.nodeID != excludeStation.nodeID }
+        } else {
+            self.searchResults = stations
+        }
+        
+        self.tableView.reloadData()
+        self.updateTableViewHeight()
+        self.tableView.isHidden = self.searchResults.isEmpty
+    }
 
     // MARK: - UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filteredStations.count
+        return searchResults.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "StationCell", for: indexPath)
-        let station = filteredStations[indexPath.row]
+        let station = searchResults[indexPath.row]
         
-        // セルの背景色を設定
         cell.backgroundColor = UIColor(red: 0.12, green: 0.16, blue: 0.27, alpha: 1.0)
-
-        // テキストラベルの設定
         cell.textLabel?.text = station.name
         cell.textLabel?.textColor = UIColor.white
         cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 17)
-
         return cell
     }
 
     // MARK: - UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedStation = filteredStations[indexPath.row]
-
+        let selectedStation = searchResults[indexPath.row]
+        
         if activeTextField == departureTextField {
             departureTextField.text = selectedStation.name
             selectedDeparture = selectedStation
@@ -177,12 +174,46 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
             selectedDestination = selectedStation
         }
 
-        // 選択後、キーボードを閉じてテーブルを非表示にする
         activeTextField?.resignFirstResponder()
         activeTextField = nil
         
-        tableView.isHidden = true
-        filteredStations = []
+        clearAndHideTableView()
+    }
+
+    // MARK: - Helper Methods
+    private func resetStationSelectionAndList(for textField: UITextField) {
+        if textField == departureTextField {
+            selectedDeparture = nil
+        } else if textField == destinationTextField {
+            selectedDestination = nil
+        }
+        clearAndHideTableView()
+    }
+
+    private func clearAndHideTableView() {
+        searchResults = []
         tableView.reloadData()
+        tableView.isHidden = true
+    }
+    
+    private func updateTableViewHeight() {
+        let contentHeight = tableView.contentSize.height
+        let maxHeight: CGFloat = 300 // テーブルビューの最大の高さを設定
+        tableViewHeightConstraint.constant = min(contentHeight, maxHeight)
+    }
+    
+    private func setTextFieldPlaceholderColor(textField: UITextField, color: UIColor) {
+        if let placeholder = textField.placeholder {
+            textField.attributedPlaceholder = NSAttributedString(
+                string: placeholder,
+                attributes: [NSAttributedString.Key.foregroundColor: color]
+            )
+        }
+    }
+    
+    private func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 }
