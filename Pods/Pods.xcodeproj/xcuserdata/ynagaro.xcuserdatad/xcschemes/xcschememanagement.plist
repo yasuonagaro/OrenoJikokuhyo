@@ -18,6 +18,16 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>GoogleMaps-GoogleMapsResources.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>8</integer>
+		</dict>
+		<key>GoogleMaps.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>7</integer>
+		</dict>
 		<key>GoogleUserMessagingPlatform-UserMessagingPlatformResources.xcscheme</key>
 		<dict>
 			<key>isShown</key>

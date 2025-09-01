@@ -9,14 +9,14 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var bannerView: BannerView! // バナー広告表示用のビュー
 
-    // MainViewControllerから渡される現在の設定
-    var initialDeparture: Station?
-    var initialDestination: Station?
+    // ViewControllerから渡される現在の設定
+    var departure: Station?
+    var destination: Station?
     
     // MainViewControllerから設定されるdelegate
     weak var delegate: SettingsViewControllerDelegate?
-
-    private var allStations = TokyuStationData.stations
+    
+    // アプリに保存されている全駅リスト
     private var filteredStations: [Station] = []
 
     // どのテキストフィールドが編集中かを保持する
@@ -39,12 +39,12 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         // 初期状態ではテーブルビューを非表示にする
         tableView.isHidden = true
         
-        // ViewControllerから渡された初期値を設定
-        selectedDeparture = initialDeparture
-        selectedDestination = initialDestination
+        // ViewControllerから渡された値を設定
+        selectedDeparture = departure
+        selectedDestination = destination
         
-        departureTextField.text = initialDeparture?.name
-        destinationTextField.text = initialDestination?.name
+        departureTextField.text = departure?.name
+        destinationTextField.text = destination?.name
         
         // プレースホルダーの色を設定
         let placeholderColor = UIColor(white: 0.667, alpha: 1.0)
@@ -79,7 +79,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         // Case 1: Both stations are set
         if let departure = selectedDeparture, let destination = selectedDestination {
             // Check if they are the same station
-            if departure.id == destination.id {
+            if departure.nodeID == destination.nodeID {
                 let alert = UIAlertController(title: "入力エラー", message: "出発駅と到着駅には同じ駅を設定できません。", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
@@ -127,27 +127,6 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     // 駅の検索結果リストを更新・表示するヘルパーメソッド
     private func refreshStationList(for textField: UITextField) {
         let searchText = textField.text ?? ""
-        
-        // 除外する駅を決定
-        var stationToExclude: Station?
-        if textField == departureTextField {
-            stationToExclude = selectedDestination
-        } else {
-            stationToExclude = selectedDeparture
-        }
-        
-        // フィルタリング
-        filteredStations = allStations.filter { station in
-            // 検索テキストに一致するか (空の場合は全件一致)
-            let nameMatches = searchText.isEmpty ? true : station.name.lowercased().contains(searchText.lowercased())
-            
-            // 除外対象でないか
-            if let excludeStation = stationToExclude {
-                return nameMatches && station.id != excludeStation.id
-            } else {
-                return nameMatches
-            }
-        }
         
         // UI更新
         tableView.isHidden = false

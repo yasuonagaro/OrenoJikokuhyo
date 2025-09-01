@@ -21,10 +21,10 @@ class ViewController: UIViewController, SettingsViewControllerDelegate, BannerVi
     @IBOutlet weak var bannerView: BannerView! // バナー広告表示用のビュー
     
     private let apiService = TrainAPIService()
-    private var departureStation: Station?
-    private var destinationStation: Station?
-    
     private var departures: [Departure] = []
+    private var departure: Station?
+    private var destination: Station?
+    
     private var countdownTimer: Timer?
     
     private var adManager: AdManager?
@@ -34,15 +34,16 @@ class ViewController: UIViewController, SettingsViewControllerDelegate, BannerVi
         super.viewDidLoad()
         // 保存された駅情報を読み込む
         if let stations = UserSettings.shared.loadStations() {
-            self.departureStation = stations.departure
-            self.destinationStation = stations.destination
+            
+            self.departure = stations.departure // ここを修正
+            self.destination = stations.destination // ここを修正
         }
         
         updateStationLabels() // 駅ラベルの更新
         
         // AdManagerの初期化
         adManager = AdManager()
-
+        
         // バナー広告の読み込み
         adManager?.startGoogleMobileAdsSDK(bannerView: bannerView, rootViewController: self, in: self.view, adUnitID: adUnitID)
     }
@@ -50,8 +51,8 @@ class ViewController: UIViewController, SettingsViewControllerDelegate, BannerVi
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // 駅が設定されていれば時刻を再取得
-        if departureStation != nil {
-            fetchAndDisplayTimetable()
+        if departure != nil {
+            fetchAndDisplayRoute()
         }
     }
     
@@ -63,15 +64,15 @@ class ViewController: UIViewController, SettingsViewControllerDelegate, BannerVi
             settingsVC.delegate = self
             
             // 現在設定されている駅の情報を設定画面に渡す
-            settingsVC.initialDeparture = self.departureStation
-            settingsVC.initialDestination = self.destinationStation
+            settingsVC.departure = self.departure
+            settingsVC.destination = self.destination
         }
     }
     
     // SettingsViewControllerDelegateメソッド
     func didFinishSetting(departure: Station?, destination: Station?) {
-        self.departureStation = departure
-        self.destinationStation = destination
+        self.departure = departure
+        self.destination = destination
         
         // 新しい設定を保存
         UserSettings.shared.saveStations(departure: departure, destination: destination)
@@ -79,9 +80,9 @@ class ViewController: UIViewController, SettingsViewControllerDelegate, BannerVi
         // fetchAndDisplayTimetableはviewWillAppearで呼ばれるのでここでは不要
     }
     
-    // MARK: - Private Methods
+    // 駅設定に基づいて時刻表を取得して表示を更新
     private func updateStationLabels() {
-        if let departure = departureStation, let destination = destinationStation {
+        if let departure = departure, let destination = destination {
             currentStationsLabel.text = "\(departure.name) → \(destination.name)"
         } else {
             // 駅が未設定の場合の表示
@@ -96,27 +97,22 @@ class ViewController: UIViewController, SettingsViewControllerDelegate, BannerVi
         }
     }
     
-    private func fetchAndDisplayTimetable() {
-        guard let departure = departureStation else { return }
+    private func fetchAndDisplayRoute() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        let currentTime = Date()
+        let currentTimeString = dateFormatter.string(from: currentTime)
         
-        let calendar = Calendar.current
-        let weekday = calendar.component(.weekday, from: Date()) // 日曜日=1, 土曜日=7
-        var calendarType: String
-        if weekday == 1 { calendarType = "odpt.Calendar:Holiday" }
-        else if weekday == 7 { calendarType = "odpt.Calendar:Saturday" }
-        else { calendarType = "odpt.Calendar:Weekday" }
+        guard let departure = departure else { return }
         
         Task {
             do {
-                let timetableObjects = try await apiService.fetchTimetable(
-                    stationID: departure.id,
-                    directionID: departure.directionID,
-                    calendar: calendarType
+                let routeObjects = try await apiService.fetchRoute(departureNodeID: departure.nodeID, destinationNodeID: destination?.nodeID ?? "", currentTime: currentTimeString
                 )
-                self.departures = convertToDepartures(from: timetableObjects)
+                
                 // メインスレッドでUI更新
                 DispatchQueue.main.async {
-                    self.updateDepartureInfo()
+                    self.updateResult()
                 }
             } catch {
                 DispatchQueue.main.async {
@@ -127,40 +123,8 @@ class ViewController: UIViewController, SettingsViewControllerDelegate, BannerVi
         }
     }
     
-    // TimetableObject配列をDeparture配列に変換
-    private func convertToDepartures(from objects: [TimetableObject]) -> [Departure] {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm"
-        let now = Date()
-        
-        let calendar = Calendar.current
-        
-        return objects.compactMap { obj -> Departure? in
-            guard let time = formatter.date(from: obj.departureTime) else { return nil }
-            
-            var departureDate = calendar.date(bySettingHour: calendar.component(.hour, from: time),
-                                              minute: calendar.component(.minute, from: time),
-                                              second: 0,
-                                              of: now) ?? now
-            
-            // 深夜帯（例：00:15など）で、現在時刻が23時台の場合、日付を1日進める
-            if calendar.component(.hour, from: now) > 22 && calendar.component(.hour, from: departureDate) < 2 {
-                departureDate = calendar.date(byAdding: .day, value: 1, to: departureDate) ?? departureDate
-            }
-            
-            if departureDate < now { return nil }
-            
-            return Departure(
-                departureDate: departureDate, timeString: obj.departureTime,
-                destination: obj.destinationStation.first?.split(separator: ".").last.map(String.init) ?? "不明",
-                trainType: obj.trainType.split(separator: ".").last.map(String.init) ?? "不明",
-                line: obj.railway.split(separator: ".").last.map(String.init) ?? "不明"
-            )
-        }
-    }
-    
     // 次の出発情報を更新
-    private func updateDepartureInfo() {
+    private func updateResult() {
         guard !departures.isEmpty else {
             departureTimeLabel.text = "--:--"
             lineDetailLabel.text = "本日の運行は終了しました"
@@ -195,7 +159,7 @@ class ViewController: UIViewController, SettingsViewControllerDelegate, BannerVi
         // UIの即時反映のため、タイマー開始直後にも一度実行
         updateCountdown(targetDate: date)
     }
-
+    
     // カウントダウンの更新
     private func updateCountdown(targetDate: Date) {
         let remaining = targetDate.timeIntervalSinceNow
@@ -211,7 +175,7 @@ class ViewController: UIViewController, SettingsViewControllerDelegate, BannerVi
             
             // 1秒後に時刻表を再取得
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self.fetchAndDisplayTimetable()
+                self.fetchAndDisplayRoute()
             }
         }
     }
