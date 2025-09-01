@@ -6,6 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		0786901B75F74BA2B07170A8 /* Pods_OrenoJikokuhyoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA9D25B88943B13EBB92138E /* Pods_OrenoJikokuhyoTests.framework */; };
+		081944D3AF78C67C5F35C985 /* Pods_OrenoJikokuhyo_OrenoJikokuhyoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A09F9019302799A4B3684CE4 /* Pods_OrenoJikokuhyo_OrenoJikokuhyoUITests.framework */; };
+		CE87413E79EA8B876A558C8E /* Pods_OrenoJikokuhyo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A9A68AF8640D78F5A28A2A1 /* Pods_OrenoJikokuhyo.framework */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		1B4F93E72E62BFE000486231 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -24,9 +30,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E88FB9F392EF7DDBA959D41 /* Pods-OrenoJikokuhyo-OrenoJikokuhyoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OrenoJikokuhyo-OrenoJikokuhyoUITests.debug.xcconfig"; path = "Target Support Files/Pods-OrenoJikokuhyo-OrenoJikokuhyoUITests/Pods-OrenoJikokuhyo-OrenoJikokuhyoUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		1336BE6797A98868B03A9E42 /* Pods-OrenoJikokuhyo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OrenoJikokuhyo.release.xcconfig"; path = "Target Support Files/Pods-OrenoJikokuhyo/Pods-OrenoJikokuhyo.release.xcconfig"; sourceTree = "<group>"; };
 		1B4F93D02E62BFDF00486231 /* OrenoJikokuhyo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OrenoJikokuhyo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B4F93E62E62BFE000486231 /* OrenoJikokuhyoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OrenoJikokuhyoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B4F93F02E62BFE000486231 /* OrenoJikokuhyoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OrenoJikokuhyoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		58476A493796D0B49C257C76 /* Pods-OrenoJikokuhyoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OrenoJikokuhyoTests.release.xcconfig"; path = "Target Support Files/Pods-OrenoJikokuhyoTests/Pods-OrenoJikokuhyoTests.release.xcconfig"; sourceTree = "<group>"; };
+		7A9A68AF8640D78F5A28A2A1 /* Pods_OrenoJikokuhyo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OrenoJikokuhyo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A09F9019302799A4B3684CE4 /* Pods_OrenoJikokuhyo_OrenoJikokuhyoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OrenoJikokuhyo_OrenoJikokuhyoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC20301941497CB682C39B09 /* Pods-OrenoJikokuhyo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OrenoJikokuhyo.debug.xcconfig"; path = "Target Support Files/Pods-OrenoJikokuhyo/Pods-OrenoJikokuhyo.debug.xcconfig"; sourceTree = "<group>"; };
+		E2667E0F68026224BBF3473A /* Pods-OrenoJikokuhyoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OrenoJikokuhyoTests.debug.xcconfig"; path = "Target Support Files/Pods-OrenoJikokuhyoTests/Pods-OrenoJikokuhyoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		EA7E5AF3B46E7A1BE480D818 /* Pods-OrenoJikokuhyo-OrenoJikokuhyoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OrenoJikokuhyo-OrenoJikokuhyoUITests.release.xcconfig"; path = "Target Support Files/Pods-OrenoJikokuhyo-OrenoJikokuhyoUITests/Pods-OrenoJikokuhyo-OrenoJikokuhyoUITests.release.xcconfig"; sourceTree = "<group>"; };
+		FA9D25B88943B13EBB92138E /* Pods_OrenoJikokuhyoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OrenoJikokuhyoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -65,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE87413E79EA8B876A558C8E /* Pods_OrenoJikokuhyo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0786901B75F74BA2B07170A8 /* Pods_OrenoJikokuhyoTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,12 +96,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				081944D3AF78C67C5F35C985 /* Pods_OrenoJikokuhyo_OrenoJikokuhyoUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D074E31110C257C7075BB98 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DC20301941497CB682C39B09 /* Pods-OrenoJikokuhyo.debug.xcconfig */,
+				1336BE6797A98868B03A9E42 /* Pods-OrenoJikokuhyo.release.xcconfig */,
+				0E88FB9F392EF7DDBA959D41 /* Pods-OrenoJikokuhyo-OrenoJikokuhyoUITests.debug.xcconfig */,
+				EA7E5AF3B46E7A1BE480D818 /* Pods-OrenoJikokuhyo-OrenoJikokuhyoUITests.release.xcconfig */,
+				E2667E0F68026224BBF3473A /* Pods-OrenoJikokuhyoTests.debug.xcconfig */,
+				58476A493796D0B49C257C76 /* Pods-OrenoJikokuhyoTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		1B4F93C72E62BFDF00486231 = {
 			isa = PBXGroup;
 			children = (
@@ -92,6 +123,8 @@
 				1B4F93E92E62BFE000486231 /* OrenoJikokuhyoTests */,
 				1B4F93F32E62BFE000486231 /* OrenoJikokuhyoUITests */,
 				1B4F93D12E62BFDF00486231 /* Products */,
+				0D074E31110C257C7075BB98 /* Pods */,
+				48040AAA9BD7C2BF86323BD8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -105,6 +138,16 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		48040AAA9BD7C2BF86323BD8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7A9A68AF8640D78F5A28A2A1 /* Pods_OrenoJikokuhyo.framework */,
+				A09F9019302799A4B3684CE4 /* Pods_OrenoJikokuhyo_OrenoJikokuhyoUITests.framework */,
+				FA9D25B88943B13EBB92138E /* Pods_OrenoJikokuhyoTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -112,9 +155,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1B4F93F92E62BFE000486231 /* Build configuration list for PBXNativeTarget "OrenoJikokuhyo" */;
 			buildPhases = (
+				0CBFF628BAABE30C50829759 /* [CP] Check Pods Manifest.lock */,
 				1B4F93CC2E62BFDF00486231 /* Sources */,
 				1B4F93CD2E62BFDF00486231 /* Frameworks */,
 				1B4F93CE2E62BFDF00486231 /* Resources */,
+				5FCF95215486225C4B736545 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -124,8 +169,6 @@
 				1B4F93D22E62BFDF00486231 /* OrenoJikokuhyo */,
 			);
 			name = OrenoJikokuhyo;
-			packageProductDependencies = (
-			);
 			productName = OrenoJikokuhyo;
 			productReference = 1B4F93D02E62BFDF00486231 /* OrenoJikokuhyo.app */;
 			productType = "com.apple.product-type.application";
@@ -134,6 +177,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1B4F93FE2E62BFE000486231 /* Build configuration list for PBXNativeTarget "OrenoJikokuhyoTests" */;
 			buildPhases = (
+				0EF40E7EDDD485D9CBE17346 /* [CP] Check Pods Manifest.lock */,
 				1B4F93E22E62BFE000486231 /* Sources */,
 				1B4F93E32E62BFE000486231 /* Frameworks */,
 				1B4F93E42E62BFE000486231 /* Resources */,
@@ -147,8 +191,6 @@
 				1B4F93E92E62BFE000486231 /* OrenoJikokuhyoTests */,
 			);
 			name = OrenoJikokuhyoTests;
-			packageProductDependencies = (
-			);
 			productName = OrenoJikokuhyoTests;
 			productReference = 1B4F93E62E62BFE000486231 /* OrenoJikokuhyoTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -157,9 +199,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1B4F94012E62BFE000486231 /* Build configuration list for PBXNativeTarget "OrenoJikokuhyoUITests" */;
 			buildPhases = (
+				24374C5DA6D20F528EDFEA40 /* [CP] Check Pods Manifest.lock */,
 				1B4F93EC2E62BFE000486231 /* Sources */,
 				1B4F93ED2E62BFE000486231 /* Frameworks */,
 				1B4F93EE2E62BFE000486231 /* Resources */,
+				C3F4542C8ECF0B0D1C291948 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -170,8 +214,6 @@
 				1B4F93F32E62BFE000486231 /* OrenoJikokuhyoUITests */,
 			);
 			name = OrenoJikokuhyoUITests;
-			packageProductDependencies = (
-			);
 			productName = OrenoJikokuhyoUITests;
 			productReference = 1B4F93F02E62BFE000486231 /* OrenoJikokuhyoUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
@@ -244,6 +286,109 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0CBFF628BAABE30C50829759 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-OrenoJikokuhyo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		0EF40E7EDDD485D9CBE17346 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-OrenoJikokuhyoTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		24374C5DA6D20F528EDFEA40 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-OrenoJikokuhyo-OrenoJikokuhyoUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5FCF95215486225C4B736545 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-OrenoJikokuhyo/Pods-OrenoJikokuhyo-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-OrenoJikokuhyo/Pods-OrenoJikokuhyo-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-OrenoJikokuhyo/Pods-OrenoJikokuhyo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C3F4542C8ECF0B0D1C291948 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-OrenoJikokuhyo-OrenoJikokuhyoUITests/Pods-OrenoJikokuhyo-OrenoJikokuhyoUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-OrenoJikokuhyo-OrenoJikokuhyoUITests/Pods-OrenoJikokuhyo-OrenoJikokuhyoUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-OrenoJikokuhyo-OrenoJikokuhyoUITests/Pods-OrenoJikokuhyo-OrenoJikokuhyoUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1B4F93CC2E62BFDF00486231 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -284,6 +429,7 @@
 /* Begin XCBuildConfiguration section */
 		1B4F93FA2E62BFE000486231 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DC20301941497CB682C39B09 /* Pods-OrenoJikokuhyo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -317,6 +463,7 @@
 		};
 		1B4F93FB2E62BFE000486231 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1336BE6797A98868B03A9E42 /* Pods-OrenoJikokuhyo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -469,6 +616,7 @@
 		};
 		1B4F93FF2E62BFE000486231 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E2667E0F68026224BBF3473A /* Pods-OrenoJikokuhyoTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -488,6 +636,7 @@
 		};
 		1B4F94002E62BFE000486231 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 58476A493796D0B49C257C76 /* Pods-OrenoJikokuhyoTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -507,6 +656,7 @@
 		};
 		1B4F94022E62BFE000486231 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0E88FB9F392EF7DDBA959D41 /* Pods-OrenoJikokuhyo-OrenoJikokuhyoUITests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -524,6 +674,7 @@
 		};
 		1B4F94032E62BFE000486231 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EA7E5AF3B46E7A1BE480D818 /* Pods-OrenoJikokuhyo-OrenoJikokuhyoUITests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;

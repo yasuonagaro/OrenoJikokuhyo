@@ -1,5 +1,7 @@
 //  ViewController.swift
+//  OrenoJikokuhyo
 
+import GoogleMobileAds
 import UIKit
 
 // 設定完了をMainViewControllerに通知するためのプロトコル
@@ -8,7 +10,7 @@ protocol SettingsViewControllerDelegate: AnyObject {
 }
 
 // メイン画面のViewController
-class ViewController: UIViewController, SettingsViewControllerDelegate {
+class ViewController: UIViewController, SettingsViewControllerDelegate, BannerViewDelegate {
     
     @IBOutlet weak var currentStationsLabel: UILabel! // 出発駅と到着駅を表示
     @IBOutlet weak var departureTimeLabel: UILabel! // 次の出発時刻を表示
@@ -16,6 +18,7 @@ class ViewController: UIViewController, SettingsViewControllerDelegate {
     @IBOutlet weak var lineDetailLabel: UILabel! // 電車の詳細を表示
     @IBOutlet weak var nextDepartureTimeLabel: UILabel! // 次の出発情報を表示
     @IBOutlet weak var nextCountdownLabel: UILabel! // カウントダウンを表示
+    @IBOutlet weak var bannerView: BannerView! // バナー広告表示用のビュー
     
     private let apiService = TrainAPIService()
     private var departureStation: Station?
@@ -32,6 +35,25 @@ class ViewController: UIViewController, SettingsViewControllerDelegate {
             self.destinationStation = stations.destination
         } 
         updateStationLabels()
+        
+        // バナー広告の設定
+        bannerView.adUnitID = "ca-app-pub-2578365445147845/9108550209" // テスト用広告ユニットID
+        bannerView.rootViewController = self // バナー広告の表示に必要
+        bannerView.delegate = self // BannerViewDelegateを設定
+        
+        // Google Mobile Ads SDKの初期化
+        MobileAds.shared.start()
+        
+        // バナー広告のサイズを設定
+    
+        let frame = view.frame // 画面全体のフレームを取得
+        let viewWidth = frame.inset(by: view.safeAreaInsets).width // 安全領域を考慮した幅を取得
+        bannerView.adSize = currentOrientationAnchoredAdaptiveBanner(width: viewWidth) // 画面幅に合わせたバナーサイズ
+        
+        // 広告リクエストの作成と読み込み
+        bannerView.load(Request())
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -208,5 +230,33 @@ class ViewController: UIViewController, SettingsViewControllerDelegate {
         super.viewDidDisappear(animated)
         countdownTimer?.invalidate()
         countdownTimer = nil
+    }
+    
+    func bannerViewDidReceiveAd(_ bannerView: BannerView) {
+      print(#function)
+    }
+
+    func bannerView(_ bannerView: BannerView, didFailToReceiveAdWithError error: Error) {
+      print(#function + ": " + error.localizedDescription)
+    }
+
+    func bannerViewDidRecordClick(_ bannerView: BannerView) {
+      print(#function)
+    }
+
+    func bannerViewDidRecordImpression(_ bannerView: BannerView) {
+      print(#function)
+    }
+
+    func bannerViewWillPresentScreen(_ bannerView: BannerView) {
+      print(#function)
+    }
+
+    func bannerViewWillDismissScreen(_ bannerView: BannerView) {
+      print(#function)
+    }
+
+    func bannerViewDidDismissScreen(_ bannerView: BannerView) {
+      print(#function)
     }
 }

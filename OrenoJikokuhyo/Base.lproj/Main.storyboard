@@ -242,24 +242,36 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m1d-8e-pQr" userLabel="広告" customClass="GADBannerView">
+                                <rect key="frame" x="0.0" y="822" width="440" height="100"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="zTz-Ve-b9m"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.1019607931" green="0.1019607931" blue="0.1764705926" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Bte-cf-wnb" secondAttribute="trailing" constant="20" id="4lX-0g-RTR"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="yp7-qf-q8g" secondAttribute="trailing" constant="20" id="8JW-ue-3E5"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="m1d-8e-pQr" secondAttribute="trailing" id="BnM-uJ-rs7"/>
                             <constraint firstItem="Bte-cf-wnb" firstAttribute="top" secondItem="shA-dP-lS0" secondAttribute="bottom" constant="20" id="LHG-Ek-OoF"/>
                             <constraint firstItem="Bte-cf-wnb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="ROf-Zs-bJf"/>
                             <constraint firstItem="shA-dP-lS0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="T9D-cN-9qC"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="m1d-8e-pQr" secondAttribute="bottom" id="WvP-vW-saR"/>
                             <constraint firstItem="Bte-cf-wnb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YkS-IK-b71"/>
                             <constraint firstItem="yp7-qf-q8g" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="b4D-lc-a87"/>
                             <constraint firstItem="shA-dP-lS0" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="nbc-e2-AsI"/>
+                            <constraint firstItem="m1d-8e-pQr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="njz-Bf-gOj"/>
+                            <constraint firstItem="m1d-8e-pQr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="npt-hC-Mfr"/>
                             <constraint firstItem="shA-dP-lS0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="o6I-0A-DcJ"/>
                             <constraint firstItem="yp7-qf-q8g" firstAttribute="top" secondItem="Bte-cf-wnb" secondAttribute="bottom" constant="20" id="pJR-UT-oXG"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="shA-dP-lS0" secondAttribute="trailing" constant="20" id="r5X-Dp-gao"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bannerView" destination="m1d-8e-pQr" id="k7v-2B-gr9"/>
                         <outlet property="countdownLabel" destination="rZ8-6v-3je" id="f1Z-oA-xjm"/>
                         <outlet property="currentStationsLabel" destination="985-os-moQ" id="Ovc-Mx-wLj"/>
                         <outlet property="departureTimeLabel" destination="KXu-aD-Hw0" id="7vA-Kj-djX"/>
