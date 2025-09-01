@@ -1,4 +1,7 @@
+//  Departure.swift
 import Foundation
+
+// 電車の出発情報を表す構造体
 struct Departure {
     let departureDate: Date // カウントダウン計算用にDate型で保持
     let timeString: String // 表示用の "HH:mm" 形式  <-- この行が必要です

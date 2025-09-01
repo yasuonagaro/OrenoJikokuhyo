@@ -1,10 +1,4 @@
-//
 //  AppDelegate.swift
-//  OrenoJikokuhyo
-//
-//  Created by ynagaro on 2025/08/30.
-//
-
 import UIKit
 
 @main

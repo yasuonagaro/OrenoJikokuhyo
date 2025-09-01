@@ -1,9 +1,4 @@
-//
 //  ViewController.swift
-//  OrenoJikokuhyo
-//
-//  Created by ynagaro on 2025/08/30.
-//
 
 import UIKit
 
@@ -12,6 +7,7 @@ protocol SettingsViewControllerDelegate: AnyObject {
     func didFinishSetting(departure: Station?, destination: Station?)
 }
 
+// メイン画面のViewController
 class ViewController: UIViewController, SettingsViewControllerDelegate {
     
     @IBOutlet weak var currentStationsLabel: UILabel! // 出発駅と到着駅を表示
