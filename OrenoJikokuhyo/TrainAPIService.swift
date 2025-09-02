@@ -1,5 +1,7 @@
 import Foundation
 
+
+//
 // MARK: - APIレスポンスをデコードするためのCodableモデル
 // ▼▼▼【変更点1】すべてのモデルを独立させ、ネストを解消しました ▼▼▼
 
@@ -18,28 +20,56 @@ struct RouteResponse: Codable {
     let items: [RouteItem]
 }
 
-struct RouteItem: Codable {
-    let summary: Summary
-    let sections: [Section]
-}
-
 struct Summary: Codable {
-    let move: MoveInfo
+    let move: Move
 }
 
-struct MoveInfo: Codable {
-    let time: Int // 所要時間（分）
-    let fare: Int // 運賃（円）
+struct Move: Codable {
+    let fromTime: String // "yyyy-MM-dd'T'HH:mm:ss"
+
+    enum CodingKeys: String, CodingKey {
+        case fromTime = "from_time"
+    }
+}
+
+struct RouteItem: Codable {
+    let sections: [Section]
+    let summary: Summary
 }
 
 struct Section: Codable {
     let type: String
     let transport: TransportInfo?
+    let departurePoint: PointInfo?
+    let fromTime: String? // "move"セクションの出発時刻
+
+    enum CodingKeys: String, CodingKey {
+        case type, transport
+        case departurePoint = "departure_point"
+        case fromTime = "from_time"
+    }
+}
+
+struct PointInfo: Codable {
+    let time: String // "HH:mm"
+    let datetime: String // "yyyy-MM-dd'T'HH:mm:ss"
 }
 
 struct TransportInfo: Codable {
     let name: String
+    let type: String
     let color: String?
+    let links: [LinkInfo]? // linksプロパティを追加
+}
+
+// links配列の要素をデコードするためのモデル
+struct LinkInfo: Codable {
+    let destination: DestinationInfo
+}
+
+// destinationオブジェクトをデコードするためのモデル
+struct DestinationInfo: Codable {
+    let name: String
 }
 
 
@@ -98,7 +128,7 @@ class TrainAPIService {
     }
     
     // 非同期で経路情報を取得するメソッド
-    func fetchRoute(departureNodeID: String, destinationNodeID: String, currentTime: String) async throws -> RouteResponse {
+    func fetchRoute(departureNodeID: String, destinationNodeID: String, currentTime: String) async throws -> [Departure] {
         
         // 1. URLとクエリパラメータの設定
         var components = URLComponents(string: "https://navitime-route-totalnavi.p.rapidapi.com/route_transit")!
@@ -134,7 +164,8 @@ class TrainAPIService {
         do {
             let decoder = JSONDecoder()
             let routeResponse = try decoder.decode(RouteResponse.self, from: data)
-            return routeResponse
+            // パース処理を呼び出して、[Departure]に変換して返す
+            return parseRouteResponse(routeResponse)
         } catch {
             print("Decode Error: \(error)")
             if let responseString = String(data: data, encoding: .utf8) {
@@ -142,5 +173,56 @@ class TrainAPIService {
             }
             throw error
         }
+    }
+    
+    // RouteResponseから[Departure]への変換ロジック
+    private func parseRouteResponse(_ response: RouteResponse) -> [Departure] {
+        var departures: [Departure] = []
+        let isoDateFormatter = DateFormatter()
+        isoDateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssXXX" // タイムゾーン(e.g., +09:00)もパースできるように修正
+        isoDateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        isoDateFormatter.timeZone = TimeZone(identifier: "Asia/Tokyo")
+
+        let timeFormatter = DateFormatter()
+        timeFormatter.dateFormat = "HH:mm"
+        timeFormatter.timeZone = TimeZone(identifier: "Asia/Tokyo")
+
+        // APIが返す各経路候補(item)をループ
+        for item in response.items {
+            // 経路の中から、最初の電車での移動区間(section)を探す
+            guard let firstMoveSection = item.sections.first(where: { $0.type == "move" && $0.transport != nil }) else {
+                // 電車の移動区間が見つからなければ、この経路候補はスキップ
+                continue
+            }
+            
+            // 電車の移動区間から、必須となる情報を取得する
+            guard let transport = firstMoveSection.transport, let fromTime = firstMoveSection.fromTime else {
+                // 交通情報 or 出発時刻がなければ、この区間はスキップ
+                continue
+            }
+
+            // 出発時刻をDateオブジェクトに変換する
+            guard let departureDate = isoDateFormatter.date(from: fromTime) else {
+                // 変換に失敗したらスキップ
+                continue
+            }
+            
+            // 補足的な情報を取得する（もし取得できなくても"不明"などで補う）
+            let destinationName = transport.links?.first?.destination.name ?? "不明"
+            let timeString = timeFormatter.string(from: departureDate)
+
+            // 抽出した情報から、アプリで使うDepartureオブジェクトを作成
+            let departure = Departure(
+                timeString: timeString,
+                departureDate: departureDate,
+                line: transport.name,
+                trainType: transport.type,
+                destination: destinationName
+            )
+            departures.append(departure)
+        }
+        
+        // 見つかった出発情報を返す（見つからなければ空の配列が返る）
+        return departures
     }
 }

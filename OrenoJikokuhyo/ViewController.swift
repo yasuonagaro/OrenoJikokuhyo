@@ -21,9 +21,9 @@ class ViewController: UIViewController, SettingsViewControllerDelegate, BannerVi
     @IBOutlet weak var bannerView: BannerView! // バナー広告表示用のビュー
     
     private let apiService = TrainAPIService()
-    private var departures: [Departure] = []
     private var departure: Station?
     private var destination: Station?
+    private var departures: [Departure] = [] // 出発情報の配列
     
     private var countdownTimer: Timer?
     
@@ -77,7 +77,11 @@ class ViewController: UIViewController, SettingsViewControllerDelegate, BannerVi
         // 新しい設定を保存
         UserSettings.shared.saveStations(departure: departure, destination: destination)
         updateStationLabels()
-        // fetchAndDisplayTimetableはviewWillAppearで呼ばれるのでここでは不要
+        
+        // 新しい駅が設定されたので、すぐに経路を再検索する
+        if departure != nil {
+            fetchAndDisplayRoute()
+        }
     }
     
     // 駅設定に基づいて時刻表を取得して表示を更新
@@ -105,10 +109,16 @@ class ViewController: UIViewController, SettingsViewControllerDelegate, BannerVi
         
         guard let departure = departure else { return }
         
+        print("Fetching route for \(departure.name)...") // デバッグ出力
+        
         Task {
             do {
                 let routeObjects = try await apiService.fetchRoute(departureNodeID: departure.nodeID, destinationNodeID: destination?.nodeID ?? "", currentTime: currentTimeString
                 )
+                
+                self.departures = routeObjects
+                
+                print("Successfully fetched \(self.departures.count) departures.") // デバッグ出力
                 
                 // メインスレッドでUI更新
                 DispatchQueue.main.async {
@@ -116,8 +126,8 @@ class ViewController: UIViewController, SettingsViewControllerDelegate, BannerVi
                 }
             } catch {
                 DispatchQueue.main.async {
-                    // エラーハンドリング (Step 8で実装)
-                    print("API Error: \(error)")
+                    // エラーハンドリング
+                    print("API Error in fetchAndDisplayRoute: \(error)") // デバッグ出力
                 }
             }
         }
@@ -167,7 +177,7 @@ class ViewController: UIViewController, SettingsViewControllerDelegate, BannerVi
         if remaining > 0 {
             let minutes = Int(remaining) / 60
             let seconds = Int(remaining) % 60
-            countdownLabel.text = String(format: "あと %02d 分 %02d 秒", minutes, seconds) // "あと mm 分 ss 秒" 形式で表示
+            countdownLabel.text = String(format: "%02d 分 %02d 秒", minutes, seconds) // "あと mm 分 ss 秒" 形式で表示
         } else {
             countdownLabel.text = "発車しました"
             countdownTimer?.invalidate()
