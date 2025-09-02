@@ -198,7 +198,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     
     private func updateTableViewHeight() {
         let contentHeight = tableView.contentSize.height
-        let maxHeight: CGFloat = 300 // テーブルビューの最大の高さを設定
+        let maxHeight: CGFloat = 220 // テーブルビューの最大の高さを設定
         tableViewHeightConstraint.constant = min(contentHeight, maxHeight)
     }
     
