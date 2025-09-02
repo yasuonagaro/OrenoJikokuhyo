@@ -135,11 +135,13 @@ class ViewController: UIViewController, SettingsViewControllerDelegate, BannerVi
     
     // 次の出発情報を更新
     private func updateResult() {
+        // 1番目の出発情報
         guard !departures.isEmpty else {
             departureTimeLabel.text = "--:--"
             lineDetailLabel.text = "本日の運行は終了しました"
-            nextDepartureTimeLabel.text = ""
             countdownLabel.text = ""
+            nextDepartureTimeLabel.text = ""
+            nextCountdownLabel.text = ""
             countdownTimer?.invalidate() // 終電後はタイマーを止める
             return
         }
@@ -148,42 +150,72 @@ class ViewController: UIViewController, SettingsViewControllerDelegate, BannerVi
         departureTimeLabel.text = nextDeparture.timeString
         lineDetailLabel.text = "\(nextDeparture.line) \(nextDeparture.trainType)・\(nextDeparture.destination)方面"
         
-        // 次の電車情報
+        // 2番目の出発情報
         if departures.count > 1 {
             let secondDeparture = departures[1]
-            nextDepartureTimeLabel.text = "次: \(secondDeparture.timeString) | \(secondDeparture.line) \(secondDeparture.trainType)"
+            nextDepartureTimeLabel.text = "\(secondDeparture.timeString) | \(secondDeparture.line) \(secondDeparture.trainType)"
         } else {    // 最終電車の場合
             nextDepartureTimeLabel.text = "次の電車はありません"
+            nextCountdownLabel.text = "" // 2番目がない場合はカウントダウンも消す
         }
         
-        startCountdown(for: nextDeparture.departureDate)
+        // カウントダウンタイマーを開始または更新
+        startOrUpdateCountdownTimer()
     }
     
-    // カウントダウンタイマーの開始
-    private func startCountdown(for date: Date) {
-        countdownTimer?.invalidate()
+    // カウントダウンタイマーを開始または更新する
+    private func startOrUpdateCountdownTimer() {
+        countdownTimer?.invalidate() // 既存のタイマーを停止
         
-        countdownTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
-            self?.updateCountdown(targetDate: date)
+        // 表示すべき出発情報がなければ何もしない
+        guard !departures.isEmpty else { return }
+        
+        // 1秒ごとにupdateCountdownsを呼び出すタイマーを開始
+        countdownTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCountdowns), userInfo: nil, repeats: true)
+    }
+    
+    // カウントダウン表示を更新する（タイマーから1秒ごとに呼ばれる）
+    @objc private func updateCountdowns() {
+        var shouldRefresh = false
+        
+        // 1番目のカウントダウン
+        if !departures.isEmpty {
+            let targetDate = departures[0].departureDate
+            let remaining = targetDate.timeIntervalSinceNow
+            
+            if remaining > 0 {
+                let minutes = Int(remaining) / 60
+                let seconds = Int(remaining) % 60
+                countdownLabel.text = String(format: "%02d 分 %02d 秒", minutes, seconds)
+            } else {
+                // 発車時刻を過ぎたらリフレッシュフラグを立てる
+                if countdownLabel.text != "発車しました" {
+                    shouldRefresh = true
+                }
+                countdownLabel.text = "発車しました"
+            }
         }
-        // UIの即時反映のため、タイマー開始直後にも一度実行
-        updateCountdown(targetDate: date)
-    }
-    
-    // カウントダウンの更新
-    private func updateCountdown(targetDate: Date) {
-        let remaining = targetDate.timeIntervalSinceNow
         
-        if remaining > 0 {
-            let minutes = Int(remaining) / 60
-            let seconds = Int(remaining) % 60
-            countdownLabel.text = String(format: "%02d 分 %02d 秒", minutes, seconds) // "あと mm 分 ss 秒" 形式で表示
+        // 2番目のカウントダウン
+        if departures.count > 1 {
+            let targetDate = departures[1].departureDate
+            let remaining = targetDate.timeIntervalSinceNow
+            
+            if remaining > 0 {
+                let minutes = Int(remaining) / 60
+                let seconds = Int(remaining) % 60
+                nextCountdownLabel.text = String(format: "%02d 分 %02d 秒", minutes, seconds)
+            } else {
+                nextCountdownLabel.text = "発車しました"
+            }
         } else {
-            countdownLabel.text = "発車しました"
+            nextCountdownLabel.text = ""
+        }
+        
+        // 最初の電車が発車したら、1秒後に時刻表を再取得
+        if shouldRefresh {
             countdownTimer?.invalidate()
             countdownTimer = nil
-            
-            // 1秒後に時刻表を再取得
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 self.fetchAndDisplayRoute()
             }

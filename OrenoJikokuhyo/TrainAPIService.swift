@@ -127,44 +127,82 @@ class TrainAPIService {
         }
     }
     
-    // 非同期で経路情報を取得するメソッド
+    // 非同期で経路情報を取得するメソッド（2回APIを呼び出す）
     func fetchRoute(departureNodeID: String, destinationNodeID: String, currentTime: String) async throws -> [Departure] {
-        
-        // 1. URLとクエリパラメータの設定
+        var finalDepartures: [Departure] = []
+
+        // --- 1回目のAPI呼び出し（次の出発を取得） ---
+        let firstRequestComponents = createURLComponents(departureNodeID: departureNodeID, destinationNodeID: destinationNodeID, startTime: currentTime, limit: 1)
+        let firstResponseData = try await performRequest(with: firstRequestComponents)
+        let firstParsedDepartures = try parseAndConvert(data: firstResponseData)
+
+        guard let firstDeparture = firstParsedDepartures.first else {
+            // 最初の電車が見つからなければ、空の配列を返す
+            return []
+        }
+        finalDepartures.append(firstDeparture)
+
+        // --- 2回目のAPI呼び出し（その次の出発を取得） ---
+        // 1本目の電車の出発時刻の1分後を、2回目の検索開始時刻に設定
+        let nextSearchDate = firstDeparture.departureDate.addingTimeInterval(60) // 60秒後
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        let nextSearchTimeString = dateFormatter.string(from: nextSearchDate)
+
+        do {
+            let secondRequestComponents = createURLComponents(departureNodeID: departureNodeID, destinationNodeID: destinationNodeID, startTime: nextSearchTimeString, limit: 1)
+            let secondResponseData = try await performRequest(with: secondRequestComponents)
+            let secondParsedDepartures = try parseAndConvert(data: secondResponseData)
+
+            if let secondDeparture = secondParsedDepartures.first {
+                finalDepartures.append(secondDeparture)
+            }
+        } catch {
+            // 2回目のAPI呼び出しは失敗しても許容する（最終電車などの場合）
+            print("Could not fetch the second departure, possibly the last train: \(error)")
+        }
+
+        return finalDepartures
+    }
+
+    // URLComponentsを生成するヘルパーメソッド
+    private func createURLComponents(departureNodeID: String, destinationNodeID: String, startTime: String, limit: Int) -> URLComponents {
         var components = URLComponents(string: "https://navitime-route-totalnavi.p.rapidapi.com/route_transit")!
         components.queryItems = [
             URLQueryItem(name: "start", value: departureNodeID),
             URLQueryItem(name: "goal", value: destinationNodeID),
-            URLQueryItem(name: "start_time", value: currentTime),
-            URLQueryItem(name: "limit", value: "2"),
+            URLQueryItem(name: "start_time", value: startTime),
+            URLQueryItem(name: "limit", value: String(limit)),
         ]
-        
+        return components
+    }
+
+    // ネットワークリクエストを実行するヘルパーメソッド
+    private func performRequest(with components: URLComponents) async throws -> Data {
         guard let url = components.url else {
             throw URLError(.badURL)
         }
-        
-        // 2. URLRequestの作成とヘッダー情報の設定
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.setValue(rapidAPIHostRoute, forHTTPHeaderField: "x-rapidapi-host")
         request.setValue(rapidAPIKey, forHTTPHeaderField: "x-rapidapi-key")
-        
-        // 3. URLSessionで通信
+
         let (data, response) = try await URLSession.shared.data(for: request)
-        
-        // ステータスコードの確認
+
         guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
             if let responseString = String(data: data, encoding: .utf8) {
                 print("Server error response: \(responseString)")
             }
             throw URLError(.badServerResponse)
         }
-        
-        // 4. JSONDecoderでデコード
+        return data
+    }
+
+    // データからデコード・変換を行うヘルパーメソッド
+    private func parseAndConvert(data: Data) throws -> [Departure] {
         do {
             let decoder = JSONDecoder()
             let routeResponse = try decoder.decode(RouteResponse.self, from: data)
-            // パース処理を呼び出して、[Departure]に変換して返す
             return parseRouteResponse(routeResponse)
         } catch {
             print("Decode Error: \(error)")
