@@ -102,25 +102,19 @@
                                                 <rect key="frame" x="0.0" y="195" width="390" height="195"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="gUm-qZ-Oob">
-                                                        <rect key="frame" x="130.33333333333337" y="56.999999999999993" width="129.66666666666663" height="81.333333333333314"/>
+                                                        <rect key="frame" x="149.66666666666666" y="56.999999999999993" width="90.666666666666657" height="81.333333333333314"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="残り時間" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sft-np-Dbx" userLabel="残り時間ラベル">
-                                                                <rect key="frame" x="0.0" y="0.0" width="129.66666666666666" height="40.666666666666664"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="90.666666666666671" height="40.666666666666664"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="C2X-z4-JgT">
-                                                                <rect key="frame" x="0.0" y="40.666666666666686" width="129.66666666666666" height="40.666666666666657"/>
+                                                                <rect key="frame" x="0.0" y="40.666666666666686" width="90.666666666666671" height="40.666666666666657"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="あと" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vGe-cw-75M">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="32" height="40.666666666666664"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="03:12" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rZ8-6v-3je" userLabel="発車カウントダウン">
-                                                                        <rect key="frame" x="39.000000000000007" y="0.0" width="90.666666666666686" height="40.666666666666664"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="90.666666666666671" height="40.666666666666664"/>
                                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="34"/>
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
@@ -182,40 +176,54 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yp7-qf-q8g" userLabel="下部ボックス">
                                 <rect key="frame" x="20" y="584" width="400" height="100"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="KI1-u5-Hbc">
-                                        <rect key="frame" x="80.666666666666671" y="40" width="238.66666666666663" height="20.333333333333329"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="uiH-hH-Xri">
+                                        <rect key="frame" x="140.33333333333334" y="29.666666666666625" width="119.66666666666666" height="40.666666666666657"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="次発時刻: " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rGG-Sl-I53" userLabel="次発ラベル">
-                                                <rect key="frame" x="0.0" y="0.0" width="72.666666666666671" height="20.333333333333332"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="19:15" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7XE-wu-MFL" userLabel="次発時刻">
-                                                <rect key="frame" x="79.666666666666671" y="0.0" width="40" height="20.333333333333332"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="0.73725497719999999" green="0.80392158030000005" blue="0.82352948189999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="残り時間: " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="clg-jF-4bY" userLabel="残り">
-                                                <rect key="frame" x="126.66666666666666" y="0.0" width="72.666666666666657" height="20.333333333333332"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6:12" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dpf-gz-0h1" userLabel="次発カウントダウン">
-                                                <rect key="frame" x="206.33333333333331" y="0.0" width="32.333333333333343" height="20.333333333333332"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="0.73725497719999999" green="0.80392158030000005" blue="0.82352948189999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="KI1-u5-Hbc" userLabel="1番目の発車情報">
+                                                <rect key="frame" x="0.0" y="0.0" width="119.66666666666667" height="20.333333333333332"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="次発時刻: " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rGG-Sl-I53" userLabel="次発ラベル">
+                                                        <rect key="frame" x="0.0" y="0.0" width="72.666666666666671" height="20.333333333333332"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="19:15" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7XE-wu-MFL" userLabel="次発時刻">
+                                                        <rect key="frame" x="79.666666666666657" y="0.0" width="40" height="20.333333333333332"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" red="0.73725497719999999" green="0.80392158030000005" blue="0.82352948189999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="dYk-EP-ERn" userLabel="2番目の発車情報Stack">
+                                                <rect key="frame" x="0.0" y="20.333333333333371" width="119.66666666666667" height="20.333333333333329"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="残り時間: " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="clg-jF-4bY" userLabel="残り">
+                                                        <rect key="frame" x="0.0" y="0.0" width="72.666666666666671" height="20.333333333333332"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6:12" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dpf-gz-0h1" userLabel="次発カウントダウン">
+                                                        <rect key="frame" x="87.333333333333314" y="0.0" width="32.333333333333343" height="20.333333333333332"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" red="0.73725497719999999" green="0.80392158030000005" blue="0.82352948189999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="dYk-EP-ERn" firstAttribute="centerX" secondItem="uiH-hH-Xri" secondAttribute="centerX" id="DOQ-ju-gJg"/>
+                                            <constraint firstItem="KI1-u5-Hbc" firstAttribute="centerX" secondItem="uiH-hH-Xri" secondAttribute="centerX" id="Rb9-B2-dVG"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.11372549830000001" green="0.14901961389999999" blue="0.26274511220000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstItem="KI1-u5-Hbc" firstAttribute="centerX" secondItem="yp7-qf-q8g" secondAttribute="centerX" id="083-jw-zlL"/>
-                                    <constraint firstItem="KI1-u5-Hbc" firstAttribute="centerY" secondItem="yp7-qf-q8g" secondAttribute="centerY" id="4ww-CO-ojU"/>
+                                    <constraint firstItem="uiH-hH-Xri" firstAttribute="centerX" secondItem="yp7-qf-q8g" secondAttribute="centerX" id="Xe8-e7-Nby"/>
+                                    <constraint firstItem="uiH-hH-Xri" firstAttribute="centerY" secondItem="yp7-qf-q8g" secondAttribute="centerY" id="fdl-oE-Nt3"/>
                                     <constraint firstAttribute="height" constant="100" id="nDO-d6-isC"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
