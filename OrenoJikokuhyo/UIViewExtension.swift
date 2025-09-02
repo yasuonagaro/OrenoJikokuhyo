@@ -1,3 +1,6 @@
+//  UIViewExtension.swift
+//  OrenoJikokuhyo
+
 import UIKit
 
 // Storyboard上でデザインできるUIViewの拡張

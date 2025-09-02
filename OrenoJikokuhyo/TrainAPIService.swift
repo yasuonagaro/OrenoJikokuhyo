@@ -1,15 +1,14 @@
+//  TrainAPIService.swift
+//  OrenoJikokuhyo
+
 import Foundation
-
-
-//
-// MARK: - APIレスポンスをデコードするためのCodableモデル
-// ▼▼▼【変更点1】すべてのモデルを独立させ、ネストを解消しました ▼▼▼
 
 // transport_node APIのレスポンス用モデル
 struct NodeIDResponse: Codable {
     let items: [NodeIDItem]
 }
 
+// transport_node APIのitems配列の要素をデコードするためのモデル
 struct NodeIDItem: Codable {
     let id: String
     let name: String
@@ -20,29 +19,34 @@ struct RouteResponse: Codable {
     let items: [RouteItem]
 }
 
+// SectionやSummaryなどのネストした構造体を定義
 struct Summary: Codable {
     let move: Move
 }
 
+// moveの出発時刻をデコードするためのモデル
 struct Move: Codable {
     let fromTime: String // "yyyy-MM-dd'T'HH:mm:ss"
-
+    
     enum CodingKeys: String, CodingKey {
         case fromTime = "from_time"
     }
 }
 
+// 経路候補(item)をデコードするためのモデル
 struct RouteItem: Codable {
     let sections: [Section]
     let summary: Summary
 }
 
+// 経路の各区間(section)をデコードするためのモデル
 struct Section: Codable {
     let type: String
     let transport: TransportInfo?
     let departurePoint: PointInfo?
     let fromTime: String? // "move"セクションの出発時刻
-
+    
+    // CodingKeysでJSONキーとSwiftプロパティ名のマッピングを指定
     enum CodingKeys: String, CodingKey {
         case type, transport
         case departurePoint = "departure_point"
@@ -50,11 +54,13 @@ struct Section: Codable {
     }
 }
 
+// 駅情報をデコードするためのモデル
 struct PointInfo: Codable {
     let time: String // "HH:mm"
     let datetime: String // "yyyy-MM-dd'T'HH:mm:ss"
 }
 
+// 交通手段(transport)をデコードするためのモデル
 struct TransportInfo: Codable {
     let name: String
     let type: String
@@ -72,44 +78,50 @@ struct DestinationInfo: Codable {
     let name: String
 }
 
-
-// MARK: - API通信を行うサービスクラス
-// ▲▲▲ ここまでがモデルの定義 ▲▲▲
-
+// 鉄道APIサービスを提供するクラス
 class TrainAPIService {
-    private let rapidAPIHostNodeID = "navitime-transport.p.rapidapi.com"
-    private let rapidAPIHostRoute = "navitime-route-totalnavi.p.rapidapi.com"
-    private let rapidAPIKey = "8daa388924msh78aa299cdc27584p1f0bfdjsn37fa57fa06e2"
+    private let rapidAPIHostNodeID = "navitime-transport.p.rapidapi.com" // 駅名検索APIのホスト
+    private let rapidAPIHostRoute = "navitime-route-totalnavi.p.rapidapi.com" // 経路検索APIのホスト
+    private var rapidAPIKey: String { // APIキーをcredentials.plistから取得
+        guard let apiKey = CREDENTIALS.shared["rapidAPIKey"] as? String else {
+            fatalError("rapidAPIKey not found in credentials") // キーが見つからない場合は致命的なエラー
+        }
+        return apiKey // APIキーを返す
+    }
     
-    // ▼▼▼【新設】駅名検索用のメソッドを追加 ▼▼▼
+    // 非同期で駅情報を取得するメソッド
     func searchStations(query: String) async throws -> [Station] {
         // クエリが空の場合は空の配列を返す
         guard !query.trimmingCharacters(in: .whitespaces).isEmpty else {
             return []
         }
         
+        // URLComponentsを使ってクエリパラメータを設定
         var components = URLComponents(string: "https://navitime-transport.p.rapidapi.com/transport_node")!
         components.queryItems = [
             URLQueryItem(name: "word", value: query),
-            URLQueryItem(name: "type", value: "station"), // "train"よりも"station"の方が広範囲
+            URLQueryItem(name: "type", value: "station"), // 駅のみ検索
         ]
-
+        
+        // URLオブジェクトを生成
         guard let url = components.url else {
             throw URLError(.badURL)
         }
-
+        
+        // リクエストを作成し、必要なヘッダーを設定
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.setValue(rapidAPIHostNodeID, forHTTPHeaderField: "x-rapidapi-host")
         request.setValue(rapidAPIKey, forHTTPHeaderField: "x-rapidapi-key")
-
         let (data, response) = try await URLSession.shared.data(for: request)
         
+        // HTTPレスポンスのステータスコードをチェック
         guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
             
             throw URLError(.badServerResponse)
         }
-
+        
+        // 取得したデータをデコード
         do {
             let decoder = JSONDecoder()
             // 既存のNodeIDResponseモデルを再利用
@@ -121,6 +133,7 @@ class TrainAPIService {
             debugPrint("Fetched Stations: \(stations)")
             return stations
             
+            // デコードエラーが発生した場合はエラーログを出力して再スロー
         } catch {
             print("Decode Error (searchStations): \(error)")
             throw error
@@ -130,30 +143,30 @@ class TrainAPIService {
     // 非同期で経路情報を取得するメソッド（2回APIを呼び出す）
     func fetchRoute(departureNodeID: String, destinationNodeID: String, currentTime: String) async throws -> [Departure] {
         var finalDepartures: [Departure] = []
-
+        
         // --- 1回目のAPI呼び出し（次の出発を取得） ---
         let firstRequestComponents = createURLComponents(departureNodeID: departureNodeID, destinationNodeID: destinationNodeID, startTime: currentTime, limit: 1)
         let firstResponseData = try await performRequest(with: firstRequestComponents)
         let firstParsedDepartures = try parseAndConvert(data: firstResponseData)
-
+        
         guard let firstDeparture = firstParsedDepartures.first else {
             // 最初の電車が見つからなければ、空の配列を返す
             return []
         }
         finalDepartures.append(firstDeparture)
-
+        
         // --- 2回目のAPI呼び出し（その次の出発を取得） ---
         // 1本目の電車の出発時刻の1分後を、2回目の検索開始時刻に設定
         let nextSearchDate = firstDeparture.departureDate.addingTimeInterval(60) // 60秒後
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
         let nextSearchTimeString = dateFormatter.string(from: nextSearchDate)
-
+        
         do {
             let secondRequestComponents = createURLComponents(departureNodeID: departureNodeID, destinationNodeID: destinationNodeID, startTime: nextSearchTimeString, limit: 1)
             let secondResponseData = try await performRequest(with: secondRequestComponents)
             let secondParsedDepartures = try parseAndConvert(data: secondResponseData)
-
+            
             if let secondDeparture = secondParsedDepartures.first {
                 finalDepartures.append(secondDeparture)
             }
@@ -161,10 +174,10 @@ class TrainAPIService {
             // 2回目のAPI呼び出しは失敗しても許容する（最終電車などの場合）
             print("Could not fetch the second departure, possibly the last train: \(error)")
         }
-
+        
         return finalDepartures
     }
-
+    
     // URLComponentsを生成するヘルパーメソッド
     private func createURLComponents(departureNodeID: String, destinationNodeID: String, startTime: String, limit: Int) -> URLComponents {
         var components = URLComponents(string: "https://navitime-route-totalnavi.p.rapidapi.com/route_transit")!
@@ -176,7 +189,7 @@ class TrainAPIService {
         ]
         return components
     }
-
+    
     // ネットワークリクエストを実行するヘルパーメソッド
     private func performRequest(with components: URLComponents) async throws -> Data {
         guard let url = components.url else {
@@ -186,9 +199,9 @@ class TrainAPIService {
         request.httpMethod = "GET"
         request.setValue(rapidAPIHostRoute, forHTTPHeaderField: "x-rapidapi-host")
         request.setValue(rapidAPIKey, forHTTPHeaderField: "x-rapidapi-key")
-
+        
         let (data, response) = try await URLSession.shared.data(for: request)
-
+        
         guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
             if let responseString = String(data: data, encoding: .utf8) {
                 print("Server error response: \(responseString)")
@@ -197,7 +210,7 @@ class TrainAPIService {
         }
         return data
     }
-
+    
     // データからデコード・変換を行うヘルパーメソッド
     private func parseAndConvert(data: Data) throws -> [Departure] {
         do {
@@ -220,11 +233,11 @@ class TrainAPIService {
         isoDateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssXXX" // タイムゾーン(e.g., +09:00)もパースできるように修正
         isoDateFormatter.locale = Locale(identifier: "en_US_POSIX")
         isoDateFormatter.timeZone = TimeZone(identifier: "Asia/Tokyo")
-
+        
         let timeFormatter = DateFormatter()
         timeFormatter.dateFormat = "HH:mm"
         timeFormatter.timeZone = TimeZone(identifier: "Asia/Tokyo")
-
+        
         // APIが返す各経路候補(item)をループ
         for item in response.items {
             // 経路の中から、最初の電車での移動区間(section)を探す
@@ -238,7 +251,7 @@ class TrainAPIService {
                 // 交通情報 or 出発時刻がなければ、この区間はスキップ
                 continue
             }
-
+            
             // 出発時刻をDateオブジェクトに変換する
             guard let departureDate = isoDateFormatter.date(from: fromTime) else {
                 // 変換に失敗したらスキップ
@@ -248,7 +261,7 @@ class TrainAPIService {
             // 補足的な情報を取得する（もし取得できなくても"不明"などで補う）
             let destinationName = transport.links?.first?.destination.name ?? "不明"
             let timeString = timeFormatter.string(from: departureDate)
-
+            
             // 抽出した情報から、アプリで使うDepartureオブジェクトを作成
             let departure = Departure(
                 timeString: timeString,

@@ -1,4 +1,6 @@
 //  Departure.swift
+//  OrenoJikokuhyo
+
 import Foundation
 
 // 電車の出発情報を表す構造体

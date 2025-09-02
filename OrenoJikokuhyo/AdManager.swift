@@ -1,15 +1,12 @@
-//
 //  AdManager.swift
 //  OrenoJikokuhyo
-//
-//  Created by ynagaro on 2025/09/01.
-//
 
 import UIKit
 import GoogleMobileAds
 
+// AdMobのバナー広告を管理するクラス
 class AdManager: NSObject, BannerViewDelegate {
-
+    
     func startGoogleMobileAdsSDK(bannerView: BannerView, rootViewController: UIViewController, in view: UIView, adUnitID: String) {
         // バナー広告の設定
         bannerView.adUnitID = adUnitID // テスト用広告ユニットID
@@ -28,30 +25,30 @@ class AdManager: NSObject, BannerViewDelegate {
     }
     
     func bannerViewDidReceiveAd(_ bannerView: BannerView) {
-      print(#function)
+        print(#function)
     }
-
+    
     func bannerView(_ bannerView: BannerView, didFailToReceiveAdWithError error: Error) {
-      print(#function + ": " + error.localizedDescription)
+        print(#function + ": " + error.localizedDescription)
     }
-
+    
     func bannerViewDidRecordClick(_ bannerView: BannerView) {
-      print(#function)
+        print(#function)
     }
-
+    
     func bannerViewDidRecordImpression(_ bannerView: BannerView) {
-      print(#function)
+        print(#function)
     }
-
+    
     func bannerViewWillPresentScreen(_ bannerView: BannerView) {
-      print(#function)
+        print(#function)
     }
-
+    
     func bannerViewWillDismissScreen(_ bannerView: BannerView) {
-      print(#function)
+        print(#function)
     }
-
+    
     func bannerViewDidDismissScreen(_ bannerView: BannerView) {
-      print(#function)
+        print(#function)
     }
 }
